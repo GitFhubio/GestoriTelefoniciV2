@@ -1,0 +1,107 @@
+// inizio header
+nav {
+    position:relative;
+    @include widthContainer;
+    @include flex;
+    @media (max-width: 600px) {
+        padding:0 0;}
+    // position:fixed;
+    // top:0;
+    // z-index: 1;
+    height: 100px;
+    width: $full_width;
+    background-color:$bg-primary-color;
+    justify-content: space-between;
+    align-items: center;
+    // @media (max-width: 1360px) {
+    //     justify-content: center;}
+    ul{list-style: none;}
+  .toggle-menu{
+      position:absolute;
+      display:flex;
+      justify-content:space-between;
+      padding:30px;
+      top:0px;
+      left:0;
+      width:100%;
+      height:400px;
+      background-color:black;
+      z-index:3;
+  }
+  .header-left {
+    img {
+        height:80px;
+        width:auto;
+      // margin-left: $margin_unit / 0.75;
+      cursor:pointer;
+    }
+  }
+
+  .header-right {
+ @include flex;
+    ul:first-child {
+      padding-top: $padding_unit * 0.55;
+      @media (max-width: 1360px) {
+        display:none;}
+      li{ position:relative;
+        .dropdown{
+          width:max-content;
+          background-color: rgba(black,0.95);
+          opacity:$full_opacity * 0.9;
+          z-index:2;
+          position:absolute;
+          top:40px;
+          color: white;
+          li{
+            padding:$padding_unit / 2 $padding_unit * 0.75;
+            &:hover{
+             background-color: #78787a;
+            }
+          }
+        }
+      }
+      >li:last-child:after{
+               content:'new';
+               border-radius: 3px;
+               padding: $padding_unit / 4 $padding_unit * 0.35;
+               margin-left: $margin_unit / 1.5;
+               font-size: $font_size / 1.5;
+               font-weight: $font_weight_title / 0.6;
+               color: black;
+               background-color: gold;
+
+          }
+    }
+    >ul {
+      @include listInline;
+      >li {
+        cursor:pointer;
+        margin: $margin_unit / 0.75;
+        a {
+          text-decoration: none;
+          color: black;
+          font-weight: $font_weight_title / 0.6;
+          &:hover{
+            color: white;
+          }
+        }
+        &:first-child a {
+        color: white;
+        }
+      }
+    }
+    .nav-button {
+      @include blueBtn;
+      font-size: $font_size * 0.78;
+      @media (max-width: 1480px) {
+        display:none;}
+    }
+    ul:last-child{
+        li:last-child{
+        display:none;
+        @media (max-width: 1360px) {
+            display:block;}
+        }
+    }
+  }
+}

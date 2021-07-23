@@ -1,0 +1,84 @@
+// // Fonts
+// @import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// // Variables
+// @import 'variables';
+
+// // Bootstrap
+// @import '~bootstrap/scss/bootstrap';
+
+
+// Fonts
+// @import url('https://fonts.googleapis.com/css?family=Nunito');
+// @import url('https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+// Variables
+@import 'variables';
+@import "mixins";
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+@import 'partials/landingpage';
+@import 'partials/public-menu';
+@import 'partials/myfooter';
+@import 'partials/crud';
+@import 'partials/mynavbar';
+@import 'partials/offerdetail';
+@import 'partials/login&register';
+
+:root {
+    font-size: 16px;
+    @media screen and (max-width: 762px) {
+        font-size: 14px;
+    }
+}
+a { color: #5D6F34;
+    &:hover {
+     text-decoration: none;
+    color: #5D6F34;
+    }
+}
+body{
+    // font-family: 'Teko', sans-serif;
+    font-family: 'Inter', sans-serif;
+}
+main {
+  background-color: $bg-secondary-color;
+}
+.totalwrapper{
+    position:relative;
+}
+
+.btn-bg-black{
+  background-color: $bg-footer-color !important;
+  color: $secondary-color;
+  &:hover{
+    color: $bg-primary-color;
+  }
+}
+
+.my-btn-bg {
+  background-color: $bg-primary-color !important;
+  &:hover{
+    background-color: hsl(9, 60%, 45%) !important;
+    color: #fff;
+    transition: 0 linear !important;
+    //filter: brightness(80%);
+  }
+}
+
+.section-title {
+    font-size: $font-medium;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 60px;
+    color: black;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.fade {
+    @include fade;
+  }
