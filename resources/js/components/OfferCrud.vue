@@ -10,6 +10,9 @@
       @update="update"
       @delete="del"
     ></offercrud-component>
+        <div>
+      <button @click="create">Add new offer</button>
+    </div>
     </div>
 </template>
 
@@ -48,10 +51,10 @@
     // this.cruds.find(crud => crud.id === id).backimg = backimg;
 
   },
-//   async create() {
-//     const { data } = await this.$http.get('/api/cruds/create');
-//     this.cruds.push(new Crud(data));
-//   },
+  async create() {
+    const { data } = await this.$http.get('/user/myoffers/create');
+    this.cruds.push(new Crud(data));
+  },
   async del(id) {
     await this.$http.delete(`/user/myoffers/${id}`);
     let index = this.cruds.findIndex(crud => crud.id === id);

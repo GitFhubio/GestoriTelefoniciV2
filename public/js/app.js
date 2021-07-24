@@ -2630,6 +2630,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 function Crud(_ref) {
   var id = _ref.id,
       name = _ref.name,
@@ -2724,35 +2727,58 @@ function Crud(_ref) {
         }, _callee2);
       }))();
     },
-    //   async create() {
-    //     const { data } = await this.$http.get('/api/cruds/create');
-    //     this.cruds.push(new Crud(data));
-    //   },
-    del: function del(id) {
+    create: function create() {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-        var index;
+        var _yield$_this3$$http$g, data;
+
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return _this3.$http["delete"]("/user/myoffers/".concat(id));
+                return _this3.$http.get('/user/myoffers/create');
 
               case 2:
-                index = _this3.cruds.findIndex(function (crud) {
-                  return crud.id === id;
-                });
+                _yield$_this3$$http$g = _context3.sent;
+                data = _yield$_this3$$http$g.data;
 
-                _this3.cruds.splice(index, 1);
+                _this3.cruds.push(new Crud(data));
 
-              case 4:
+              case 5:
               case "end":
                 return _context3.stop();
             }
           }
         }, _callee3);
+      }))();
+    },
+    del: function del(id) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+        var index;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return _this4.$http["delete"]("/user/myoffers/".concat(id));
+
+              case 2:
+                index = _this4.cruds.findIndex(function (crud) {
+                  return crud.id === id;
+                });
+
+                _this4.cruds.splice(index, 1);
+
+              case 4:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
       }))();
     }
   },
@@ -40942,7 +40968,11 @@ var render = function() {
             false
           )
         )
-      })
+      }),
+      _vm._v(" "),
+      _c("div", [
+        _c("button", { on: { click: _vm.create } }, [_vm._v("Add new offer")])
+      ])
     ],
     2
   )

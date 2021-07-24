@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Offer;
+use Faker\Generator;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Response;
 
 class CrudOfferController extends Controller
 {
@@ -26,9 +27,18 @@ class CrudOfferController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Generator $faker)
     {
-        //
+      $crud = new Offer();
+      $crud->name = $faker->lexify('');
+      $crud->costo_mensile = 0;
+      $crud->descrizione ='';
+      $crud->data_inizio = $faker->date();
+      $crud->data_fine= $faker->date();
+      $crud->user_id = Auth::user()->id;
+      $crud->save();
+
+      return response($crud->jsonSerialize(), Response::HTTP_CREATED);
     }
 
     /**
