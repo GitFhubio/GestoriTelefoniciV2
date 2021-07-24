@@ -3,7 +3,7 @@
 </template>
 <script>
   export default {
-    name:'AdminDashboard',
+    name:'OfferCrud',
   }
 </script>
 <style>

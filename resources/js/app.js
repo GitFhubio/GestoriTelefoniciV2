@@ -1,5 +1,6 @@
 
 Vue.component('crud-page', require('./components/CrudPage.vue').default);
+Vue.component('offer-crud', require('./components/OfferCrud.vue').default);
 Vue.component('navbar-component', require('./components/NavbarComponent.vue').default);
 Vue.component('footer-component', require('./components/FooterComponent.vue').default);
 Vue.component('item-component', require('./components/ItemComponent.vue').default);

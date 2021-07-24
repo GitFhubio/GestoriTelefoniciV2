@@ -8,7 +8,7 @@ use Faker\Generator;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class CrudsController extends Controller
+class CrudAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
