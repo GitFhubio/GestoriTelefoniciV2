@@ -24,30 +24,21 @@
 </template>
 <script>
   export default {
-    name:'CrudComponent',
+    name:'OfferCrudComponent',
     data:function(){
         return {
-            newName:'',
-             newEmail:'',
         }
     },
     methods: {
-        onFileChange(e){
-            const files = e.target.files;
-               let itemfile = files[0].name;
-            //    console.log("images/"+itemfile)
-               return "images/"+itemfile;
-
-        },
    update() {
-        this.$emit('update', this.id,this.newName,this.newEmail,this.onFileChange);
+        this.$emit('update', this.id);
       },
       del() {
         this.$emit('delete', this.id);
       },
 
     },
-    props: ['id', 'name','email','img'],
+    props: ['id'],
     filters: {
       properCase(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);

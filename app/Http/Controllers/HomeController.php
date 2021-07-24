@@ -33,7 +33,8 @@ class HomeController extends Controller
            if (!$user->hasRole($role)) {
                $user->assignRole($role);
            }
-            return redirect()->route('offers.index');
+            // return redirect()->route('offers.index');
+            return redirect()->route('crudoffer');
         } else{
             return redirect()->route('admin-dashboard');
         }

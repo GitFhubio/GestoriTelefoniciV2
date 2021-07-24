@@ -39,6 +39,10 @@ Route::prefix('user')
         //Route::get('/dashboard','DashboardController@dashboard')->name('dashboard');
     Route::get('dashboard', 'OperatorController')->name('admin-dashboard');
     Route::resource('offers', 'OfferController');
+    Route::get('/offerscrud', function () {
+        return view('user.offers.crud-offer');
+    })->name('crudoffer');
+
     Route::resource('leads', 'LeadController');
     });
 

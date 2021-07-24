@@ -1,6 +1,8 @@
 
-Vue.component('crud-page', require('./components/CrudPage.vue').default);
+Vue.component('admin-crud', require('./components/AdminCrud.vue').default);
+Vue.component('admincrud-component', require('./components/AdminCrudComponent.vue').default);
 Vue.component('offer-crud', require('./components/OfferCrud.vue').default);
+Vue.component('offercrud-component', require('./components/OfferCrudComponent.vue').default);
 Vue.component('navbar-component', require('./components/NavbarComponent.vue').default);
 Vue.component('footer-component', require('./components/FooterComponent.vue').default);
 Vue.component('item-component', require('./components/ItemComponent.vue').default);

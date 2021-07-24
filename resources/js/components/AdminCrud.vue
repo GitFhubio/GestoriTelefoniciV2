@@ -3,13 +3,13 @@
     <div class="heading">
       <h1 class="text-center">Lista operatori</h1>
     </div>
-    <crud-component
+    <admincrud-component
       v-for="crud in cruds"
       v-bind="crud"
       :key="crud.id"
       @update="update"
       @delete="del"
-    ></crud-component>
+    ></admincrud-component>
     </div>
 </template>
 
@@ -22,7 +22,7 @@
     // this.backimg = backimg;
   }
 
-  import CrudComponent from './CrudComponent.vue';
+  import AdminCrudComponent from './AdminCrudComponent.vue';
 
   export default {
     data() {
@@ -60,7 +60,7 @@
   this.read();
     },
     components: {
-      CrudComponent
+      AdminCrudComponent
     }
   }
 </script>
