@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="heading">
-      <h1 class="text-center">Lista operatori</h1>
+      <h1 class="text-center">Le tue offerte</h1>
     </div>
     <offercrud-component
       v-for="crud in cruds"
@@ -14,12 +14,13 @@
 </template>
 
 <script>
-  function Crud({id,name, email,img}) {
+  function Crud({id,name,costo_mensile, descrizione,data_inizio,data_fine}) {
     this.id = id;
     this.name = name;
-    this.email = email;
-    this.img = img;
-    // this.backimg = backimg;
+    this.costo_mensile=costo_mensile;
+    this.descrizione=descrizione;
+    this.data_inizio= data_inizio;
+    this.data_fine=data_fine;
   }
 
   import OfferCrudComponent from './OfferCrudComponent.vue';
@@ -32,17 +33,18 @@
     },
     methods: {
         async read() {
-        // To do
-         const {data} =await this.$http.get('/api/cruds');
+         const {data} =await this.$http.get('/user/myoffers');
     // console.log(data);
     data.forEach(crud => this.cruds.push(new Crud(crud)));
 
       },
-  async update(id, name,email,img) {
-    await this.$http.put(`/api/cruds/${id}`, { name,email,img});
+  async update(id, name,costo_mensile,descrizione,data_inizio,data_fine) {
+    await this.$http.put(`/user/myoffers/${id}`, { name,costo_mensile,descrizione,data_inizio,data_fine});
     this.cruds.find(crud => crud.id === id).name = name;
-    this.cruds.find(crud => crud.id === id).email = email;
-    this.cruds.find(crud => crud.id === id).img = img;
+    this.cruds.find(crud => crud.id === id).costo_mensile = descrizione;
+    this.cruds.find(crud => crud.id === id).descrizione = descrizione;
+    this.cruds.find(crud => crud.id === id).data_inizio = data_inizio;
+    this.cruds.find(crud => crud.id === id).data_fine = data_fine;
     // this.cruds.find(crud => crud.id === id).backimg = backimg;
 
   },
@@ -51,7 +53,7 @@
 //     this.cruds.push(new Crud(data));
 //   },
   async del(id) {
-    await this.$http.delete(`/api/cruds/${id}`);
+    await this.$http.delete(`/user/myoffers/${id}`);
     let index = this.cruds.findIndex(crud => crud.id === id);
     this.cruds.splice(index, 1);
   }

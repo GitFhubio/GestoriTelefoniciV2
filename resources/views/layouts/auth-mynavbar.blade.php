@@ -52,7 +52,7 @@
     <li><a class="btn btn-light  mr-sm-1 my-btn-login" href="/login">Accedi</a></li>
     <li><a class="btn btn-light my-btn-register" href="/register">Registrati</a></li>
 @else
-<li><a href="{{Auth::id()==1 ? '/user/dashboard' : '/user/offers'}}" >Dashboard</a></li>
+<li><a href="{{Auth::id()==1 ? '/user/dashboard' : '/user/offerscrud'}}" >Dashboard</a></li>
 <li><a class="btn btn-light my-btn-login" href="{{ route('logout') }}" onclick="event.preventDefault();
                       document.getElementById('logout-form').submit();">
             {{ __('Esci') }}

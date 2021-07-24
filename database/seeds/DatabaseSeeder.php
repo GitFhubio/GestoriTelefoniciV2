@@ -5,6 +5,7 @@ use App\Note;
 use App\User;
 use App\Offer;
 use App\Category;
+use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
@@ -38,6 +39,7 @@ class DatabaseSeeder extends Seeder
         $user1->name='Admin';
         $user1->email='admin@outlook.it';
         $user1->password = Hash::make('beinformatica');
+        $user1->api_token = Str::random(60);
         $user1->save();
         $role1 = Role::create(['name' => 'admin']);
         $permission = Permission::create(['name' => 'edit-users']);
@@ -51,6 +53,7 @@ class DatabaseSeeder extends Seeder
         $user2->email='Tim@outlook.it';
         $user2->img='https://pbs.twimg.com/profile_images/687250413788106753/Of-4AHDY_400x400.png';
         $user2->password = Hash::make('beinformatica');
+        $user2->api_token = Str::random(60);
         $user2->backimg='https://www.gruppotim.it/content/dam/share/TIM-socialshare-210427.jpg';
         $user2->save();
         $user2->assignRole($role2);
@@ -60,6 +63,7 @@ class DatabaseSeeder extends Seeder
         $user3->email='vodafone@outlook.it';
         $user3->img='https://ilsalvagente.it/wp-content/uploads/2016/03/vodafone-696x459.jpg';
         $user3->password = Hash::make('beinformatica');
+        $user3->api_token = Str::random(60);
         $user3->backimg='http://avmtel.com/wp/wp-content/uploads/2018/12/banner-vodafone-dec18.jpg';
         $user3->save();
         $user3->assignRole($role2);
@@ -69,6 +73,7 @@ class DatabaseSeeder extends Seeder
         $user4->email='windtre@outlook.it';
         $user4->img='https://wips.plug.it/cips/tecnologia/cms/2020/03/wind-tre.jpg';
         $user4->password = Hash::make('beinformatica');
+        $user4->api_token = Str::random(60);
         $user4->backimg='https://d1qsjop7tycsfb.cloudfront.net/fileadmin/mainbrand/secondary-banner/condizioni-utilizzo_secondary_banner_desktop.jpg';
         $user4->save();
         $user4->assignRole($role2);

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -71,6 +72,7 @@ class RegisterController extends Controller
         $backimg = isset($data['backimg']) ? $data['backimg']->store('images') : NULL;
         return User::create([
             'name' => $data['name'],
+            'api_token' => Str::random(60),
             'email' => $data['email'],
             'img'=> $img,
             'backimg'=>$backimg,

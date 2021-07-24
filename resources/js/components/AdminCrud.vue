@@ -33,13 +33,13 @@
     methods: {
         async read() {
         // To do
-         const {data} =await this.$http.get('/api/cruds');
+         const {data} =await this.$http.get('/api/myoperators');
     // console.log(data);
     data.forEach(crud => this.cruds.push(new Crud(crud)));
 
       },
   async update(id, name,email,img) {
-    await this.$http.put(`/api/cruds/${id}`, { name,email,img});
+    await this.$http.put(`/api/myoperators/${id}`, { name,email,img});
     this.cruds.find(crud => crud.id === id).name = name;
     this.cruds.find(crud => crud.id === id).email = email;
     this.cruds.find(crud => crud.id === id).img = img;
@@ -51,7 +51,7 @@
 //     this.cruds.push(new Crud(data));
 //   },
   async del(id) {
-    await this.$http.delete(`/api/cruds/${id}`);
+    await this.$http.delete(`/api/myoperators/${id}`);
     let index = this.cruds.findIndex(crud => crud.id === id);
     this.cruds.splice(index, 1);
   }

@@ -36,6 +36,11 @@ Route::prefix('user')
     ->namespace('Admin')
     ->middleware('auth')
     ->group(function () {
+
+    Route::resource('myoffers', 'CrudOfferController');
+    Route::resource('myleads', 'CrudLeadController');
+    // l'ho dovuto mettere qui anche se api senno non potevo usare Auth::id(), problema col token/laravel passport?
+
         //Route::get('/dashboard','DashboardController@dashboard')->name('dashboard');
     Route::get('dashboard', 'OperatorController')->name('admin-dashboard');
     Route::resource('offers', 'OfferController');

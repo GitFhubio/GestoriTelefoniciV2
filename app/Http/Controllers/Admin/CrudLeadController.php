@@ -1,23 +1,28 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Admin;
+use App\Lead;
 use App\Offer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
-class CrudOfferController extends Controller
+class CrudLeadController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $offers=Offer::where('user_id', Auth::user()->id)->get();
-        return response($offers->jsonSerialize(), Response::HTTP_OK);
+     $offers=Offer::where('user_id', Auth::user()->id)->get();
+     $leads = [];
+     foreach ($offers as $offer){
+         $leads[] =$offer->leads()->get()->first();
+     }
+    return response($leads, Response::HTTP_OK);
     }
 
     /**
@@ -72,15 +77,11 @@ class CrudOfferController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $crud = Offer::findOrFail($id);
-      $crud->name = $request->name;
-      $crud->costo_mensile = $request->costo_mensile;
-      $crud->descrizione = $request->descrizione;
-      $crud->data_inizio = $request->data_inizio;
-      $crud->data_fine = $request->data_fine;
-      $crud->save();
+        $crud = Lead::findOrFail($id);
+        $crud->status=$request->status;
+        $crud->save();
 
-      return response(null, Response::HTTP_OK);
+        return response(null, Response::HTTP_OK);
     }
 
     /**
@@ -91,7 +92,7 @@ class CrudOfferController extends Controller
      */
     public function destroy($id)
     {
-        Offer::destroy($id);
+        Lead::destroy($id);
         return response(null, Response::HTTP_OK);
     }
 }

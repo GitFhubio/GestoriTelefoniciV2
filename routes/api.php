@@ -23,4 +23,5 @@ Route::get('offers','Api\ApiController@offers');
 Route::get('categories/{name}','Api\ApiController@filteredOffers');
 Route::get('operators','Api\ApiController@operators');
 
-Route::resource('cruds', 'CrudAdminController',['except'=>['edit','show','store']]);
+Route::resource('myoperators', 'CrudAdminController',['except'=>['edit','show','store']]);
+// Route::resource('myoffers', 'CrudOfferController');
