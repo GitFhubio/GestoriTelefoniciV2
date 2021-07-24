@@ -25,7 +25,7 @@ Vue.component('landing-page', require('./components/LandingPage.vue').default);
         // searchProvider: '',
         // offers: [],
         // operators:[],
-        // show:false,
+        show:false,
 
     },
 mounted: function() {
