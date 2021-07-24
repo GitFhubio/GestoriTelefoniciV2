@@ -79,6 +79,6 @@ class OperatorController extends Controller
     // }
 
  public function __invoke(){
-     return view('test');
+     return view('admin');
  }
 }
