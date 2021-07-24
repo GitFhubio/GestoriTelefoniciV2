@@ -48,11 +48,6 @@
 //     const { data } = await this.$http.get('/api/cruds/create');
 //     this.cruds.push(new Crud(data));
 //   },
-  async del(id) {
-    await this.$http.delete(`/user/myleads/${id}`);
-    let index = this.cruds.findIndex(crud => crud.id === id);
-    this.cruds.splice(index, 1);
-  }
     },
  created() {
   this.read();

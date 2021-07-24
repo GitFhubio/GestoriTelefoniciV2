@@ -7,25 +7,19 @@
        <h6>Telefono: {{ telefono }}</h6>
       <h6>Email: {{ email }}</h6>
       <h6>Status: {{ status }}</h6>
-    <div class="buttons">
-     <button @click="update">Update</button>
-      <button @click="del">Delete</button>
-    </div>
+      <select name="" id="" @change="update">
+          <option v-for="thisstatus in ['ok','non ok','da gestire']" :value="thisstatus" :key="thisstatus" :selected="thisstatus === status">{{thisstatus | properCase}}</option>
+      </select>
     </div>
   </div>
 </template>
 <script>
   export default {
     name:'LidCrudComponent',
-    data:function(){
-        return {
-
-        }
-    },
     methods: {
 
-   update() {
-        this.$emit('update', this.id,this.status);
+   update(val) {
+        this.$emit('update', this.id,val.target.selectedOptions[0].value);
       },
       del() {
         this.$emit('delete', this.id);

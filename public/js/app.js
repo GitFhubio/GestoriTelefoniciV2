@@ -2430,38 +2430,11 @@ function Crud(_ref) {
           }
         }, _callee2);
       }))();
-    },
-    //   async create() {
+    } //   async create() {
     //     const { data } = await this.$http.get('/api/cruds/create');
     //     this.cruds.push(new Crud(data));
     //   },
-    del: function del(id) {
-      var _this3 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-        var index;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.next = 2;
-                return _this3.$http["delete"]("/user/myleads/".concat(id));
-
-              case 2:
-                index = _this3.cruds.findIndex(function (crud) {
-                  return crud.id === id;
-                });
-
-                _this3.cruds.splice(index, 1);
-
-              case 4:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3);
-      }))();
-    }
   },
   created: function created() {
     this.read();
@@ -2499,15 +2472,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'LidCrudComponent',
-  data: function data() {
-    return {};
-  },
   methods: {
-    update: function update() {
-      this.$emit('update', this.id, this.status);
+    update: function update(val) {
+      this.$emit('update', this.id, val.target.selectedOptions[0].value);
     },
     del: function del() {
       this.$emit('delete', this.id);
@@ -40735,11 +40704,24 @@ var render = function() {
       _vm._v(" "),
       _c("h6", [_vm._v("Status: " + _vm._s(_vm.status))]),
       _vm._v(" "),
-      _c("div", { staticClass: "buttons" }, [
-        _c("button", { on: { click: _vm.update } }, [_vm._v("Update")]),
-        _vm._v(" "),
-        _c("button", { on: { click: _vm.del } }, [_vm._v("Delete")])
-      ])
+      _c(
+        "select",
+        { attrs: { name: "", id: "" }, on: { change: _vm.update } },
+        _vm._l(["ok", "non ok", "da gestire"], function(thisstatus) {
+          return _c(
+            "option",
+            {
+              key: thisstatus,
+              domProps: {
+                value: thisstatus,
+                selected: thisstatus === _vm.status
+              }
+            },
+            [_vm._v(_vm._s(_vm._f("properCase")(thisstatus)))]
+          )
+        }),
+        0
+      )
     ])
   ])
 }
