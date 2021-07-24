@@ -2350,7 +2350,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 function Crud(_ref) {
   var id = _ref.id,
       offer_id = _ref.offer_id,
@@ -2477,9 +2476,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     update: function update(val) {
       this.$emit('update', this.id, val.target.selectedOptions[0].value);
-    },
-    del: function del() {
-      this.$emit('delete', this.id);
     }
   },
   props: ['id', 'offer_id', 'nome', 'cognome', 'telefono', 'email', 'status'],
@@ -40647,7 +40643,7 @@ var render = function() {
         return _c(
           "leadcrud-component",
           _vm._b(
-            { key: crud.id, on: { update: _vm.update, delete: _vm.del } },
+            { key: crud.id, on: { update: _vm.update } },
             "leadcrud-component",
             crud,
             false

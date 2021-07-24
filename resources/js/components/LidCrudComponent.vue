@@ -21,10 +21,6 @@
    update(val) {
         this.$emit('update', this.id,val.target.selectedOptions[0].value);
       },
-      del() {
-        this.$emit('delete', this.id);
-      },
-
     },
     props: ['id', 'offer_id','nome','cognome','telefono','email','status'],
     filters: {

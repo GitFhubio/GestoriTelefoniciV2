@@ -8,7 +8,6 @@
       v-bind="crud"
       :key="crud.id"
       @update="update"
-      @delete="del"
     ></leadcrud-component>
     </div>
 </template>
