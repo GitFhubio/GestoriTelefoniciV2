@@ -23,8 +23,8 @@
               item:Object,
               parameter:Array,
           },
-        mounted() {
-            console.log('Component mounted.')
-        }
+        // mounted() {
+        //     console.log('Component mounted.')
+        // }
     }
 </script>

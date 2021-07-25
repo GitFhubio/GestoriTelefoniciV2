@@ -10994,6 +10994,13 @@ a.text-dark:focus {
   justify-content: center;
 }
 
+#landing .landing-page .section-title-container .reset {
+  background-color: gold;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+}
+
 #landing .landing-page .section-title-container .section-title {
   font-size: 2.3rem;
   position: relative;

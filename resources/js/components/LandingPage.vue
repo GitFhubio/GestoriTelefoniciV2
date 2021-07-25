@@ -12,10 +12,13 @@
     </div>
     <item-section :items="operators" class="section d-flex flex-wrap justify-content-center operatorsSection">
        </item-section>
-           <div class="section-title-container">
-    </div>
+    <category-section :array="categories" class="section d-flex flex-wrap justify-content-center categoriesSection">
+    </category-section>
+     <div class="section-title-container">
+    <button class="text-center reset" @click="showAll" v-if="onSearch">Torna a tutte le offerte</button>
+     </div>
  <div class="section-title-container">
- <h2 class="text-center section-title" style="margin-top: 20px">Le nostre offerte</h2>
+ <h2 class="text-center section-title" style="margin-top: 20px">Le nostre offerte {{selected}}</h2>
      </div>
     <item-section :items="offers" :parameter="operators" class="section d-flex flex-wrap justify-content-center offersSection">
     </item-section>
@@ -26,16 +29,20 @@
 
 <script>
   import ItemSection from './ItemSection.vue';
+    import CategorySection from './CategorySection.vue';
 export default {
   name: 'LandingPage',
   components: {
-    ItemSection
+    ItemSection,
+    CategorySection
   },
   data: function() {
     return {
       operators:[],
       offers:[],
-      catgories:[]
+      categories:[],
+      selected: '',
+      onSearch:false,
     }
   },
 mounted: function() {
@@ -51,12 +58,31 @@ mounted: function() {
             this.offers = response.data;
             console.log(this.offers)
         })
-        //     axios
-        // .get('api/categories')
-        // .then((response) => {
-        //     this.categories = response.data;
-        //     console.log(this.categories);
-        // })
+            axios
+        .get('api/categories')
+        .then((response) => {
+            this.categories = response.data;
+            console.log(this.categories);
+        })
 },
+methods:{
+        showAll() {
+        axios
+        .get('api/offers')
+        .then((response) => {
+            this.offers = response.data;
+        })
+        this.onSearch=false;
+        this.selected='';
+    },
+},
+
+created: function(){
+  this.$event.$on('categoryselected', (data) => {
+   this.offers=data[0];
+   this.onSearch=data[1];
+   this.selected=data[2];
+})
+}
 }
 </script>

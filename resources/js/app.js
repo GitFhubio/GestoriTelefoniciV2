@@ -1,4 +1,5 @@
-
+Vue.component('category-component', require('./components/CategoryComponent.vue').default);
+Vue.component('category-section', require('./components/CategorySection.vue').default);
 Vue.component('admin-crud', require('./components/AdminCrud.vue').default);
 Vue.component('admincrud-component', require('./components/AdminCrudComponent.vue').default);
 Vue.component('lead-crud', require('./components/LeadCrud.vue').default);
@@ -17,6 +18,7 @@ Vue.component('landing-page', require('./components/LandingPage.vue').default);
     import App from './components/App';
     require('./bootstrap');
 
+ Vue.prototype.$event =new Vue();  //sarebbe il mio bus
 
      const app = new Vue({
        el: '#app',
