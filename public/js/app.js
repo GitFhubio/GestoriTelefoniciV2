@@ -1997,18 +1997,17 @@ __webpack_require__.r(__webpack_exports__);
     return {
       newName: '',
       newEmail: '',
-      zoom: 'zoom-off'
+      zoom: 'zoom-off',
+      url: this.img
     };
   },
   methods: {
     onFileChange: function onFileChange(e) {
-      var files = e.target.files;
-      var itemfile = files[0].name; //    console.log("images/"+itemfile)
-
-      return "images/" + itemfile;
+      var file = e.target.files[0];
+      this.url = URL.createObjectURL(file);
     },
     update: function update() {
-      this.$emit('update', this.id, this.newName, this.newEmail, this.onFileChange);
+      this.$emit('update', this.id, this.newName, this.newEmail, 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/1200px-Google_Chrome_icon_%28September_2014%29.svg.png');
     },
     del: function del() {
       this.$emit('delete', this.id);
@@ -41184,7 +41183,7 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "card-body d-flex flex-column" }, [
-        _c("img", { attrs: { src: _vm.img } }),
+        _c("img", { staticClass: "operator_img", attrs: { src: _vm.url } }),
         _vm._v(" "),
         _c("h5", { staticClass: "card-text" }, [
           _vm._v("Nome: " + _vm._s(_vm._f("properCase")(_vm.name)))
@@ -41239,7 +41238,7 @@ var render = function() {
         _c("label", { attrs: { for: "img" } }, [_vm._v("Carica nuovo avatar")]),
         _vm._v(" "),
         _c("input", {
-          attrs: { type: "file", name: "img", multiple: "" },
+          attrs: { type: "file", name: "img" },
           on: { change: _vm.onFileChange }
         }),
         _vm._v(" "),

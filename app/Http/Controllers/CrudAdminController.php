@@ -77,7 +77,6 @@ class CrudAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd( $request->file('img')->store('images'));
       $crud = User::findOrFail($id);
       $crud->name = $request->name;
       $crud->email = $request->email;
