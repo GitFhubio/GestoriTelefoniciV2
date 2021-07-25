@@ -15,10 +15,11 @@
     <category-section :array="categories" class="section d-flex flex-wrap justify-content-center categoriesSection">
     </category-section>
      <div class="section-title-container">
-    <button class="text-center reset" @click="showAll" v-if="onSearch">Torna a tutte le offerte</button>
+    <button class="text-center reset" @click="showAll" v-if="result">Torna a tutte le offerte</button>
      </div>
  <div class="section-title-container">
- <h2 class="text-center section-title" style="margin-top: 20px">Le nostre offerte {{selected}}</h2>
+ <h2 class="text-center section-title" style="margin-top: 20px">Le nostre offerte
+      {{result != null ? result.nome : ''}}</h2>
      </div>
     <item-section :items="offers" :parameter="operators" class="section d-flex flex-wrap justify-content-center offersSection">
     </item-section>
@@ -42,7 +43,8 @@ export default {
       offers:[],
       categories:[],
       selected: '',
-      onSearch:false,
+    //   onSearch:false,
+      result:null,
     }
   },
 mounted: function() {
@@ -64,11 +66,21 @@ mounted: function() {
             this.categories = response.data;
             console.log(this.categories);
         })
-   this.$event.$on('categoryselected', (data) => {
-   this.offers=data[0];
-   this.onSearch=data[1];
-   this.selected=data[2];
-})
+//    this.$event.$on('categoryselected', (data) => {
+//    this.offers=data[0];
+//    this.onSearch=data[1];
+//    this.selected=data[2];
+// })
+this.$event.$on('selCat',data=>{this.result=data;
+console.log(this.result);
+  axios
+            .get('api/categories/' + this.result.nome)
+            .then((response) => {
+                this.offers = response.data;
+            })
+}
+)
+// this.$event.$emit('categoryselected', [this.result,true,category.nome])
 },
 methods:{
         showAll() {
@@ -77,7 +89,8 @@ methods:{
         .then((response) => {
             this.offers = response.data;
         })
-        this.onSearch=false;
+        // this.onSearch=false;
+        this.result=null;
         this.selected='';
     },
 }

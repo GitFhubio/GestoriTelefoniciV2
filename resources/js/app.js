@@ -19,7 +19,7 @@ Vue.component('landing-page', require('./components/LandingPage.vue').default);
     require('./bootstrap');
 
  Vue.prototype.$event =new Vue();  //sarebbe il mio bus
-
+    // const bus= new Vue();
      const app = new Vue({
        el: '#app',
        components:{App},

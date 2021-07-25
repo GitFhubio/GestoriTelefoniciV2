@@ -11861,4 +11861,16 @@ main {
   animation-timing-function: ease;
 }
 
+.goldbtn {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: gold;
+  font-weight: 500;
+}
+
+.goldbtn:hover {
+  background-color: rgba(255, 215, 0, 0.8);
+}
+
 

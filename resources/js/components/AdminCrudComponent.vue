@@ -11,8 +11,8 @@
     </div>
 
     <div class="buttons">
-     <button @click="update">Update</button>
-      <button @click="del">Delete</button>
+     <button  @click="update">Update</button>
+     <button @click="del">Delete</button>
     </div>
     </div>
 </template>

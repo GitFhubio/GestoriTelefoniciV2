@@ -47,6 +47,17 @@
       background-color: rgba(blue,0.8);
     }
   }
+  @mixin goldBtn {
+    cursor:pointer;
+    padding:10px;
+    border-radius:10px;
+    background-color: rgba(gold,1);
+    font-weight: $font_weight_title / 0.6;
+    &:hover {
+      background-color: rgba(gold,0.8);
+    }
+  }
+
   @mixin trasparentBtn {
     @include Btn;
     border: 2px solid black;

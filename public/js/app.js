@@ -2078,12 +2078,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'CategoryComponent',
+  data: function data() {
+    return {
+      catselected: this.element
+    };
+  },
   props: {
     element: Object
+  },
+  methods: {
+    clickedCategory: function clickedCategory() {
+      this.$event.$emit('selCat', this.catselected);
+    }
   } // mounted() {
-  //     console.log('CategoryComponent mounted.')
+  //     console.log(this.giampselected)
   // }
 
 });
@@ -2107,6 +2118,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2121,15 +2134,14 @@ __webpack_require__.r(__webpack_exports__);
       result: []
     };
   },
-  methods: {
-    selectedCategory: function selectedCategory(category) {
-      var _this = this;
-
-      axios.get('api/categories/' + category.nome).then(function (response) {
-        _this.result = response.data;
-      });
-      this.$event.$emit('categoryselected', [this.result, true, category.nome]);
-    }
+  methods: {// selectedCategory(category) {
+    //     axios
+    //         .get('api/categories/' + category.nome)
+    //         .then((response) => {
+    //             this.result = response.data;
+    //         })
+    //     this.$event.$emit('categoryselected', [this.result,true,category.nome])
+    // }
   }
 });
 
@@ -2358,6 +2370,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2372,7 +2385,8 @@ __webpack_require__.r(__webpack_exports__);
       offers: [],
       categories: [],
       selected: '',
-      onSearch: false
+      //   onSearch:false,
+      result: null
     };
   },
   mounted: function mounted() {
@@ -2389,12 +2403,19 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('api/categories').then(function (response) {
       _this.categories = response.data;
       console.log(_this.categories);
-    });
-    this.$event.$on('categoryselected', function (data) {
-      _this.offers = data[0];
-      _this.onSearch = data[1];
-      _this.selected = data[2];
-    });
+    }); //    this.$event.$on('categoryselected', (data) => {
+    //    this.offers=data[0];
+    //    this.onSearch=data[1];
+    //    this.selected=data[2];
+    // })
+
+    this.$event.$on('selCat', function (data) {
+      _this.result = data;
+      console.log(_this.result);
+      axios.get('api/categories/' + _this.result.nome).then(function (response) {
+        _this.offers = response.data;
+      });
+    }); // this.$event.$emit('categoryselected', [this.result,true,category.nome])
   },
   methods: {
     showAll: function showAll() {
@@ -2402,8 +2423,9 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('api/offers').then(function (response) {
         _this2.offers = response.data;
-      });
-      this.onSearch = false;
+      }); // this.onSearch=false;
+
+      this.result = null;
       this.selected = '';
     }
   }
@@ -3042,6 +3064,7 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.prototype.$http = (axios__WEBPACK_IMPOR
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 vue__WEBPACK_IMPORTED_MODULE_0__.default.prototype.$event = new vue__WEBPACK_IMPORTED_MODULE_0__.default(); //sarebbe il mio bus
+// const bus= new Vue();
 
 var app = new vue__WEBPACK_IMPORTED_MODULE_0__.default({
   el: '#app',
@@ -40660,7 +40683,7 @@ var render = function() {
       staticClass: "categories",
       on: {
         click: function($event) {
-          return _vm.$emit("selCat")
+          return _vm.clickedCategory()
         }
       }
     },
@@ -40697,15 +40720,7 @@ var render = function() {
   return _c(
     "div",
     _vm._l(_vm.array, function(element, ind) {
-      return _c("category-component", {
-        key: ind,
-        attrs: { element: element },
-        on: {
-          selCat: function($event) {
-            return _vm.selectedCategory(element)
-          }
-        }
-      })
+      return _c("category-component", { key: ind, attrs: { element: element } })
     }),
     1
   )
@@ -40969,7 +40984,7 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("div", { staticClass: "section-title-container" }, [
-          _vm.onSearch
+          _vm.result
             ? _c(
                 "button",
                 {
@@ -40988,7 +41003,12 @@ var render = function() {
               staticClass: "text-center section-title",
               staticStyle: { "margin-top": "20px" }
             },
-            [_vm._v("Le nostre offerte " + _vm._s(_vm.selected))]
+            [
+              _vm._v(
+                "Le nostre offerte\n      " +
+                  _vm._s(_vm.result != null ? _vm.result.nome : "")
+              )
+            ]
           )
         ]),
         _vm._v(" "),
