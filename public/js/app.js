@@ -1834,6 +1834,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 function Crud(_ref) {
   var id = _ref.id,
       name = _ref.name,
@@ -1969,12 +1971,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2449,6 +2445,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 function Crud(_ref) {
   var id = _ref.id,
       offer_id = _ref.offer_id,
@@ -2732,6 +2730,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 function Crud(_ref) {
   var id = _ref.id,
       name = _ref.name,
@@ -2908,6 +2908,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -40432,11 +40437,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _vm._m(0),
-      _vm._v(" "),
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "d-flex flex-wrap justify-content-center" },
       _vm._l(_vm.cruds, function(crud) {
         return _c(
           "admincrud-component",
@@ -40447,10 +40453,10 @@ var render = function() {
             false
           )
         )
-      })
-    ],
-    2
-  )
+      }),
+      1
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -40484,66 +40490,71 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "crud" }, [
-    _c("div", { staticClass: "col-2" }, [
-      _c("h5", [_vm._v("Nome: " + _vm._s(_vm._f("properCase")(_vm.name)))]),
-      _vm._v(" "),
-      _c("h6", [_vm._v("Email: " + _vm._s(_vm.email))]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.newName,
-            expression: "newName"
-          }
-        ],
-        attrs: { type: "text", placeholder: "Inserisci nuovo nome" },
-        domProps: { value: _vm.newName },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.newName = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.newEmail,
-            expression: "newEmail"
-          }
-        ],
-        attrs: { type: "text", placeholder: "Inserisci nuova email" },
-        domProps: { value: _vm.newEmail },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.newEmail = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("label", { attrs: { for: "img" } }, [_vm._v("Carica avatar")]),
-      _c("input", {
-        attrs: { type: "file", name: "img", multiple: "" },
-        on: { change: _vm.onFileChange }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-1" }, [
-        _c("p", [_vm._v("Avatar:")]),
-        _vm._v(" "),
+  return _c(
+    "div",
+    { staticClass: "card", staticStyle: { width: "300px", margin: "20px" } },
+    [
+      _c("div", { staticClass: "card-body d-flex flex-column" }, [
         _c("img", {
-          staticStyle: { height: "40px", width: "auto" },
+          staticStyle: { width: "auto", height: "40%" },
           attrs: { src: _vm.img }
+        }),
+        _vm._v(" "),
+        _c("h5", { staticClass: "card-text" }, [
+          _vm._v("Nome: " + _vm._s(_vm._f("properCase")(_vm.name)))
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newName,
+              expression: "newName"
+            }
+          ],
+          attrs: { type: "text", placeholder: "Inserisci nuovo nome" },
+          domProps: { value: _vm.newName },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.newName = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("h6", { staticClass: "card-text" }, [
+          _vm._v("Email: " + _vm._s(_vm.email))
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newEmail,
+              expression: "newEmail"
+            }
+          ],
+          attrs: { type: "text", placeholder: "Inserisci nuova email" },
+          domProps: { value: _vm.newEmail },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.newEmail = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "img" } }, [_vm._v("Carica nuovo avatar")]),
+        _vm._v(" "),
+        _c("input", {
+          attrs: { type: "file", name: "img", multiple: "" },
+          on: { change: _vm.onFileChange }
         })
       ]),
       _vm._v(" "),
@@ -40552,8 +40563,8 @@ var render = function() {
         _vm._v(" "),
         _c("button", { on: { click: _vm.del } }, [_vm._v("Delete")])
       ])
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -41048,11 +41059,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _vm._m(0),
-      _vm._v(" "),
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "d-flex flex-wrap justify-content-center" },
       _vm._l(_vm.cruds, function(crud) {
         return _c(
           "leadcrud-component",
@@ -41063,10 +41075,10 @@ var render = function() {
             false
           )
         )
-      })
-    ],
-    2
-  )
+      }),
+      1
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -41100,40 +41112,44 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "crud" }, [
-    _c("div", { staticClass: "col-8" }, [
-      _c("h5", [_vm._v("Offerta: " + _vm._s(_vm.offer_id))]),
-      _vm._v(" "),
-      _c("h6", [_vm._v("Nome: " + _vm._s(_vm._f("properCase")(_vm.nome)))]),
-      _vm._v(" "),
-      _c("h6", [_vm._v("Cognome: " + _vm._s(_vm.cognome))]),
-      _vm._v(" "),
-      _c("h6", [_vm._v("Telefono: " + _vm._s(_vm.telefono))]),
-      _vm._v(" "),
-      _c("h6", [_vm._v("Email: " + _vm._s(_vm.email))]),
-      _vm._v(" "),
-      _c("h6", [_vm._v("Status: " + _vm._s(_vm.status))]),
-      _vm._v(" "),
-      _c(
-        "select",
-        { attrs: { name: "", id: "" }, on: { change: _vm.update } },
-        _vm._l(["ok", "non ok", "da gestire"], function(thisstatus) {
-          return _c(
-            "option",
-            {
-              key: thisstatus,
-              domProps: {
-                value: thisstatus,
-                selected: thisstatus === _vm.status
-              }
-            },
-            [_vm._v(_vm._s(_vm._f("properCase")(thisstatus)))]
-          )
-        }),
-        0
-      )
-    ])
-  ])
+  return _c(
+    "div",
+    { staticClass: "card", staticStyle: { width: "300px", margin: "20px" } },
+    [
+      _c("div", { staticClass: "card-body" }, [
+        _c("h5", [_vm._v("Offerta: " + _vm._s(_vm.offer_id))]),
+        _vm._v(" "),
+        _c("h6", [_vm._v("Nome: " + _vm._s(_vm._f("properCase")(_vm.nome)))]),
+        _vm._v(" "),
+        _c("h6", [_vm._v("Cognome: " + _vm._s(_vm.cognome))]),
+        _vm._v(" "),
+        _c("h6", [_vm._v("Telefono: " + _vm._s(_vm.telefono))]),
+        _vm._v(" "),
+        _c("h6", [_vm._v("Email: " + _vm._s(_vm.email))]),
+        _vm._v(" "),
+        _c("h6", [_vm._v("Status: " + _vm._s(_vm.status))]),
+        _vm._v(" "),
+        _c(
+          "select",
+          { attrs: { name: "", id: "" }, on: { change: _vm.update } },
+          _vm._l(["ok", "non ok", "da gestire"], function(thisstatus) {
+            return _c(
+              "option",
+              {
+                key: thisstatus,
+                domProps: {
+                  value: thisstatus,
+                  selected: thisstatus === _vm.status
+                }
+              },
+              [_vm._v(_vm._s(_vm._f("properCase")(thisstatus)))]
+            )
+          }),
+          0
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -41341,11 +41357,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _vm._m(0),
-      _vm._v(" "),
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "d-flex flex-wrap justify-content-center" },
       _vm._l(_vm.cruds, function(crud) {
         return _c(
           "offercrud-component",
@@ -41357,13 +41374,13 @@ var render = function() {
           )
         )
       }),
-      _vm._v(" "),
-      _c("div", [
-        _c("button", { on: { click: _vm.create } }, [_vm._v("Add new offer")])
-      ])
-    ],
-    2
-  )
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "d-flex justify-content-center" }, [
+      _c("button", { on: { click: _vm.create } }, [_vm._v("Add new offer")])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -41397,150 +41414,202 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "crud" }, [
-    _c("div", { staticClass: "col-8" }, [
-      _c("h5", [_vm._v("Nome: " + _vm._s(_vm._f("properCase")(_vm.name)))]),
-      _vm._v(" "),
-      _c("h6", [_vm._v("Costo mensile : " + _vm._s(_vm.costo_mensile))]),
-      _vm._v(" "),
-      _c("h6", [_vm._v("Descrizione: " + _vm._s(_vm.descrizione))]),
-      _vm._v(" "),
-      _c("h6", [_vm._v("Data inizio : " + _vm._s(_vm.data_inizio))]),
-      _vm._v(" "),
-      _c("h6", [_vm._v("Data fine : " + _vm._s(_vm.data_fine))]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.newName,
-            expression: "newName"
-          }
-        ],
-        attrs: { type: "text", placeholder: "Inserisci nuovo nome" },
-        domProps: { value: _vm.newName },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "card", staticStyle: { width: "500px", margin: "20px" } },
+      [
+        _c("div", { staticClass: "card-body d-flex flex-column" }, [
+          _c("label", { attrs: { for: "name" } }, [
+            _vm._v("Nome:" + _vm._s(_vm.name))
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newName,
+                expression: "newName"
+              }
+            ],
+            attrs: {
+              type: "text",
+              name: "name",
+              placeholder: "Inserisci nuovo nome"
+            },
+            domProps: { value: _vm.newName },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.newName = $event.target.value
+              }
             }
-            _vm.newName = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.newCostoMensile,
-            expression: "newCostoMensile"
-          }
-        ],
-        attrs: { type: "number", placeholder: "Inserisci nuovo costo mensile" },
-        domProps: { value: _vm.newCostoMensile },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "costomensile" } }, [
+            _vm._v("Costo mensile: " + _vm._s(_vm.costo_mensile) + " €")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newCostoMensile,
+                expression: "newCostoMensile"
+              }
+            ],
+            attrs: {
+              type: "number",
+              name: "costomensile",
+              placeholder: "Inserisci nuovo costo mensile"
+            },
+            domProps: { value: _vm.newCostoMensile },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.newCostoMensile = $event.target.value
+              }
             }
-            _vm.newCostoMensile = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("textarea", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.newDescription,
-            expression: "newDescription"
-          }
-        ],
-        attrs: { type: "text", placeholder: "Inserisci nuova descrizione" },
-        domProps: { value: _vm.newDescription },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "descrizione" } }, [
+            _vm._v("Descrizione:" + _vm._s(_vm.descrizione) + " ")
+          ]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newDescription,
+                expression: "newDescription"
+              }
+            ],
+            attrs: { type: "text" },
+            domProps: { value: _vm.newDescription },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.newDescription = $event.target.value
+              }
             }
-            _vm.newDescription = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.newDataInizio,
-            expression: "newDataInizio"
-          }
-        ],
-        attrs: { type: "date", placeholder: "Inserisci nuova data inizio" },
-        domProps: { value: _vm.newDataInizio },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "datainizio" } }, [
+            _vm._v("Data inizio:" + _vm._s(_vm.data_inizio))
+          ]),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newDataInizio,
+                expression: "newDataInizio"
+              }
+            ],
+            attrs: { type: "date" },
+            domProps: { value: _vm.newDataInizio },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.newDataInizio = $event.target.value
+              }
             }
-            _vm.newDataInizio = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.newDataFine,
-            expression: "newDataFine"
-          }
-        ],
-        attrs: { type: "date", placeholder: "Inserisci nuova data fine" },
-        domProps: { value: _vm.newDataFine },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "datafine" } }, [
+            _vm._v("Data fine:" + _vm._s(_vm.data_fine))
+          ]),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newDataFine,
+                expression: "newDataFine"
+              }
+            ],
+            attrs: { type: "date" },
+            domProps: { value: _vm.newDataFine },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.newDataFine = $event.target.value
+              }
             }
-            _vm.newDataFine = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "select",
-        { attrs: { name: "categories[]", id: "", multiple: "" } },
-        _vm._l([1, 2, 3, 4, 5], function(val) {
-          return _c(
-            "option",
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "categories" } }, [
+            _vm._v(" Categorie:")
+          ]),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticStyle: { "list-style": "none" } },
+            _vm._l(_vm.categories, function(el, ind) {
+              return _c("li", { key: ind }, [
+                _vm._v(_vm._s(el.pivot.category_id))
+              ])
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c(
+            "select",
             {
-              key: val,
-              domProps: {
-                value: val,
-                selected: _vm.categoriesinArray().includes(val)
-                  ? "selected"
-                  : ""
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.newCategories,
+                  expression: "newCategories"
+                }
+              ],
+              attrs: { name: "categories[]", id: "", multiple: "" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.newCategories = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
               }
             },
-            [_vm._v(_vm._s(val))]
+            _vm._l([1, 2, 3, 4, 5], function(val) {
+              return _c("option", { key: val, domProps: { value: val } }, [
+                _vm._v(_vm._s(val))
+              ])
+            }),
+            0
           )
-        }),
-        0
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "buttons" }, [
-      _c("button", { on: { click: _vm.update } }, [_vm._v("Update")]),
-      _vm._v(" "),
-      _c("button", { on: { click: _vm.del } }, [_vm._v("Delete")])
-    ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "buttons" }, [
+          _c("button", { on: { click: _vm.update } }, [_vm._v("Update")]),
+          _vm._v(" "),
+          _c("button", { on: { click: _vm.del } }, [_vm._v("Delete")])
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = []

@@ -3,6 +3,7 @@
     <div class="heading">
       <h1 class="text-center">Lista operatori</h1>
     </div>
+ <div class="d-flex flex-wrap justify-content-center">
     <admincrud-component
       v-for="crud in cruds"
       v-bind="crud"
@@ -10,6 +11,7 @@
       @update="update"
       @delete="del"
     ></admincrud-component>
+    </div>
     </div>
 </template>
 

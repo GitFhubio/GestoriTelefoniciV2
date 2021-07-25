@@ -16,7 +16,7 @@
     <div id="app" >
     {{-- <div id="app"> --}}
         @include('layouts.auth-mynavbar')
-        <main>
+        <main style="min-height:70vh;">
          @yield('content')
         </main>
         @include('layouts.myfooter')

@@ -1,25 +1,30 @@
 <template>
-  <div class="crud">
-    <div class="col-8">
-      <h5>Nome: {{ name | properCase }}</h5>
-       <h6>Costo mensile : {{ costo_mensile }}</h6>
-        <h6>Descrizione: {{ descrizione }}</h6>
-       <h6>Data inizio : {{ data_inizio  }}</h6>
-        <h6>Data fine : {{ data_fine  }}</h6>
-      <input type="text" placeholder="Inserisci nuovo nome" v-model="newName">
-      <input type="number" placeholder="Inserisci nuovo costo mensile" v-model="newCostoMensile">
-      <textarea type="text" placeholder="Inserisci nuova descrizione" v-model="newDescription"></textarea>
-      <input type="date" placeholder="Inserisci nuova data inizio" v-model="newDataInizio">
-     <input type="date" placeholder="Inserisci nuova data fine" v-model="newDataFine">
-     <select name="categories[]" id="" multiple >
+        <div>
+  <div class="card" style="width:500px;margin:20px;">
+    <div class="card-body d-flex flex-column">
+      <label for="name">Nome:{{name}}</label>
+       <input type="text" name="name" placeholder="Inserisci nuovo nome" v-model="newName">
+      <label for="costomensile">Costo mensile: {{costo_mensile}} €</label>
+      <input type="number" name="costomensile" placeholder="Inserisci nuovo costo mensile" v-model="newCostoMensile">
+      <label for="descrizione">Descrizione:{{descrizione}} </label>
+      <textarea type="text" v-model="newDescription"></textarea>
+      <label for="datainizio">Data inizio:{{data_inizio}}</label><input type="date"  v-model="newDataInizio">
+       <label for="datafine">Data fine:{{data_fine}}</label><input type="date"  v-model="newDataFine">
+        <label for="categories"> Categorie:</label>
+        <ul style="list-style:none;">
+        <li v-for="(el,ind) in categories" :key=ind>{{el.pivot.category_id}}</li>
+        </ul>
          <!-- v-model="newCategories" -->
          <!-- ['Adsl','Fibra','5G','Mobile','Estero'] -->
-        <option :value="val" v-for="val in [1,2,3,4,5]"  :selected="categoriesinArray().includes(val) ? 'selected' :''" :key=val>{{val}}</option>
+        <!-- :selected="categoriesinArray().includes(val) ? 'selected' :''" -->
+       <select name="categories[]" id="" multiple v-model="newCategories">
+        <option :value="val" v-for="val in [1,2,3,4,5]"  :key=val>{{val}}</option>
     </select>
     </div>
-    <div class="buttons">
+        <div class="buttons">
      <button @click="update">Update</button>
       <button @click="del">Delete</button>
+    </div>
     </div>
     </div>
 </template>

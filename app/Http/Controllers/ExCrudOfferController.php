@@ -72,14 +72,13 @@ class CrudOfferController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $crud = Offer::findOrFail($id);
+      $crud = Offer::find($id);
       $crud->name = $request->name;
       $crud->costo_mensile = $request->costo_mensile;
       $crud->descrizione = $request->descrizione;
       $crud->data_inizio = $request->data_inizio;
       $crud->data_fine = $request->data_fine;
       $crud->save();
-
       return response(null, Response::HTTP_OK);
     }
 

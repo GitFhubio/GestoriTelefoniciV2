@@ -3,12 +3,14 @@
     <div class="heading">
       <h1 class="text-center">Lista leads</h1>
     </div>
+    <div class="d-flex flex-wrap justify-content-center">
     <leadcrud-component
       v-for="crud in cruds"
       v-bind="crud"
       :key="crud.id"
       @update="update"
     ></leadcrud-component>
+    </div>
     </div>
 </template>
 

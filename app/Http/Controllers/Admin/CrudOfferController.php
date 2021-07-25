@@ -38,7 +38,6 @@ class CrudOfferController extends Controller
       $crud->data_fine= $faker->date();
       $crud->user_id = Auth::user()->id;
       $crud->save();
-
       return response($crud->jsonSerialize(), Response::HTTP_CREATED);
     }
 
@@ -84,16 +83,17 @@ class CrudOfferController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $crud = Offer::findOrFail($id);
+      $crud = Offer::findOrFail($id);
       $crud->name = $request->name;
       $crud->costo_mensile = $request->costo_mensile;
       $crud->descrizione = $request->descrizione;
       $crud->data_inizio = $request->data_inizio;
       $crud->data_fine = $request->data_fine;
       $crud->save();
-      foreach ($request->categories as $category) {
-          $crud->categories()->attach($category);
-      }
+      $crud->categories()->sync($request->categories);
+    //   foreach ($request->categories as $category) {
+    //       $crud->categories()->attach($category);
+    //   }
       return response(null, Response::HTTP_OK);
     }
 

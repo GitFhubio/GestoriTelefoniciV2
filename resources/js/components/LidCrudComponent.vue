@@ -1,6 +1,6 @@
 <template>
-  <div class="crud">
-    <div class="col-8">
+  <div class="card" style="width:300px;margin:20px;">
+    <div class="card-body">
       <h5>Offerta: {{ offer_id }}</h5>
        <h6>Nome: {{ nome | properCase }}</h6>
        <h6>Cognome: {{ cognome  }}</h6>

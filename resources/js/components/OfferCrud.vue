@@ -3,6 +3,7 @@
     <div class="heading">
       <h1 class="text-center">Le tue offerte</h1>
     </div>
+    <div class="d-flex flex-wrap justify-content-center">
     <offercrud-component
       v-for="crud in cruds"
       v-bind="crud"
@@ -10,7 +11,8 @@
       @update="update"
       @delete="del"
     ></offercrud-component>
-        <div>
+    </div>
+    <div class="d-flex justify-content-center">
       <button @click="create">Add new offer</button>
     </div>
     </div>
