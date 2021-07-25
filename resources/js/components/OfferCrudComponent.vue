@@ -14,7 +14,6 @@
         <li v-for="(el,ind) in categories" :key=ind>{{categoryNames[el.pivot.category_id]}}</li>
         </ul>
          <!-- v-model="newCategories" -->
-         <!-- ['Adsl','Fibra','5G','Mobile','Estero'] -->
         <!-- :selected="categoriesinArray().includes(val) ? 'selected' :''" -->
        <select name="categories[]" id="" multiple v-model="newCategories">
         <option :value="val" v-for="val in [1,2,3,4,5]"  :key=val>{{categoryNames[val]}}</option>
