@@ -64,6 +64,11 @@ mounted: function() {
             this.categories = response.data;
             console.log(this.categories);
         })
+   this.$event.$on('categoryselected', (data) => {
+   this.offers=data[0];
+   this.onSearch=data[1];
+   this.selected=data[2];
+})
 },
 methods:{
         showAll() {
@@ -75,14 +80,7 @@ methods:{
         this.onSearch=false;
         this.selected='';
     },
-},
-
-created: function(){
-  this.$event.$on('categoryselected', (data) => {
-   this.offers=data[0];
-   this.onSearch=data[1];
-   this.selected=data[2];
-})
 }
+
 }
 </script>

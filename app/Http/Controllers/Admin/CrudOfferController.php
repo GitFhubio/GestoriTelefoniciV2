@@ -18,7 +18,8 @@ class CrudOfferController extends Controller
      */
     public function index(Request $request)
     {
-        $offers=Offer::where('user_id', Auth::user()->id)->get();
+        $offers=Offer::with(['categories'])->where('user_id', Auth::user()->id)->get();
+        // dd($offers->jsonSerialize());
         return response($offers->jsonSerialize(), Response::HTTP_OK);
     }
 
@@ -90,7 +91,9 @@ class CrudOfferController extends Controller
       $crud->data_inizio = $request->data_inizio;
       $crud->data_fine = $request->data_fine;
       $crud->save();
-
+      foreach ($request->categories as $category) {
+          $crud->categories()->attach($category);
+      }
       return response(null, Response::HTTP_OK);
     }
 

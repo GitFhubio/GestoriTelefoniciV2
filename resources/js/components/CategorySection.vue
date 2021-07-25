@@ -11,15 +11,19 @@ import CategoryComponent from './CategoryComponent.vue'
           props:{
               array:Array,
           },
+          data:function(){
+              return {
+                  result:[]
+              }
+          },
           methods: {
     selectedCategory(category) {
-        this.selected = category.nome;
         axios
             .get('api/categories/' + category.nome)
             .then((response) => {
-                this.offers = response.data;
+                this.result = response.data;
             })
-        this.$event.$emit('categoryselected', [this.offers,true,category.nome])
+        this.$event.$emit('categoryselected', [this.result,true,category.nome])
     }
     }
     }

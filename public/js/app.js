@@ -2120,15 +2120,19 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     array: Array
   },
+  data: function data() {
+    return {
+      result: []
+    };
+  },
   methods: {
     selectedCategory: function selectedCategory(category) {
       var _this = this;
 
-      this.selected = category.nome;
       axios.get('api/categories/' + category.nome).then(function (response) {
-        _this.offers = response.data;
+        _this.result = response.data;
       });
-      this.$event.$emit('categoryselected', [this.offers, true, category.nome]);
+      this.$event.$emit('categoryselected', [this.result, true, category.nome]);
     }
   }
 });
@@ -2390,6 +2394,11 @@ __webpack_require__.r(__webpack_exports__);
       _this.categories = response.data;
       console.log(_this.categories);
     });
+    this.$event.$on('categoryselected', function (data) {
+      _this.offers = data[0];
+      _this.onSearch = data[1];
+      _this.selected = data[2];
+    });
   },
   methods: {
     showAll: function showAll() {
@@ -2401,15 +2410,6 @@ __webpack_require__.r(__webpack_exports__);
       this.onSearch = false;
       this.selected = '';
     }
-  },
-  created: function created() {
-    var _this3 = this;
-
-    this.$event.$on('categoryselected', function (data) {
-      _this3.offers = data[0];
-      _this3.onSearch = data[1];
-      _this3.selected = data[2];
-    });
   }
 });
 
@@ -2738,13 +2738,15 @@ function Crud(_ref) {
       costo_mensile = _ref.costo_mensile,
       descrizione = _ref.descrizione,
       data_inizio = _ref.data_inizio,
-      data_fine = _ref.data_fine;
+      data_fine = _ref.data_fine,
+      categories = _ref.categories;
   this.id = id;
   this.name = name;
   this.costo_mensile = costo_mensile;
   this.descrizione = descrizione;
   this.data_inizio = data_inizio;
   this.data_fine = data_fine;
+  this.categories = categories;
 }
 
 
@@ -2784,7 +2786,7 @@ function Crud(_ref) {
         }, _callee);
       }))();
     },
-    update: function update(id, name, costo_mensile, descrizione, data_inizio, data_fine) {
+    update: function update(id, name, costo_mensile, descrizione, data_inizio, data_fine, categories) {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -2798,7 +2800,8 @@ function Crud(_ref) {
                   costo_mensile: costo_mensile,
                   descrizione: descrizione,
                   data_inizio: data_inizio,
-                  data_fine: data_fine
+                  data_fine: data_fine,
+                  categories: categories
                 });
 
               case 2:
@@ -2816,9 +2819,12 @@ function Crud(_ref) {
                 }).data_inizio = data_inizio;
                 _this2.cruds.find(function (crud) {
                   return crud.id === id;
-                }).data_fine = data_fine; // this.cruds.find(crud => crud.id === id).backimg = backimg;
+                }).data_fine = data_fine;
+                _this2.cruds.find(function (crud) {
+                  return crud.id === id;
+                }).categories = categories; // this.cruds.find(crud => crud.id === id).backimg = backimg;
 
-              case 7:
+              case 8:
               case "end":
                 return _context2.stop();
             }
@@ -2922,6 +2928,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'OfferCrudComponent',
   data: function data() {
@@ -2930,18 +2941,58 @@ __webpack_require__.r(__webpack_exports__);
       newCostoMensile: 0,
       newDescription: '',
       newDataInizio: '',
-      newDataFine: ''
+      newDataFine: '',
+      newCategories: [] //    categoriesID:[]
+
     };
   },
   methods: {
+    categoriesinArray: function categoriesinArray() {
+      var arr = [];
+      this.categories.forEach(function (element) {
+        var category_name = '';
+
+        switch (element.pivot.category_id) {
+          case 1:
+            category_name = 'ADSL';
+            break;
+
+          case 2:
+            category_name = 'Fibra';
+            break;
+
+          case 3:
+            category_name = '5G';
+            break;
+
+          case 4:
+            category_name = 'Mobile';
+            break;
+
+          case 5:
+            category_name = 'Estero';
+            break;
+
+          default:
+            break;
+        } //  this.categoriesID.push(element.pivot.category_id);
+
+
+        arr.push(element.pivot.category_id);
+      });
+      return arr;
+    },
     update: function update() {
-      this.$emit('update', this.id, this.newName, this.newCostoMensile, this.newDescription, this.newDataInizio, this.newDataFine);
+      this.$emit('update', this.id, this.newName, this.newCostoMensile, this.newDescription, this.newDataInizio, this.newDataFine, this.newCategories);
     },
     del: function del() {
       this.$emit('delete', this.id);
     }
   },
-  props: ['id', 'name', 'costo_mensile', 'descrizione', 'data_inizio', 'data_fine'],
+  mounted: function mounted() {
+    this.categoriesinArray();
+  },
+  props: ['id', 'name', 'costo_mensile', 'descrizione', 'data_inizio', 'data_fine', 'categories'],
   filters: {
     properCase: function properCase(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
@@ -41356,7 +41407,7 @@ var render = function() {
       _vm._v(" "),
       _c("h6", [_vm._v("Data inizio : " + _vm._s(_vm.data_inizio))]),
       _vm._v(" "),
-      _c("h6", [_vm._v("Data inizio : " + _vm._s(_vm.data_fine))]),
+      _c("h6", [_vm._v("Data fine : " + _vm._s(_vm.data_fine))]),
       _vm._v(" "),
       _c("input", {
         directives: [
@@ -41461,7 +41512,28 @@ var render = function() {
             _vm.newDataFine = $event.target.value
           }
         }
-      })
+      }),
+      _vm._v(" "),
+      _c(
+        "select",
+        { attrs: { name: "categories[]", id: "", multiple: "" } },
+        _vm._l([1, 2, 3, 4, 5], function(val) {
+          return _c(
+            "option",
+            {
+              key: val,
+              domProps: {
+                value: val,
+                selected: _vm.categoriesinArray().includes(val)
+                  ? "selected"
+                  : ""
+              }
+            },
+            [_vm._v(_vm._s(val))]
+          )
+        }),
+        0
+      )
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "buttons" }, [

@@ -17,13 +17,14 @@
 </template>
 
 <script>
-  function Crud({id,name,costo_mensile, descrizione,data_inizio,data_fine}) {
+  function Crud({id,name,costo_mensile, descrizione,data_inizio,data_fine,categories}) {
     this.id = id;
     this.name = name;
     this.costo_mensile=costo_mensile;
     this.descrizione=descrizione;
     this.data_inizio= data_inizio;
     this.data_fine=data_fine;
+    this.categories=categories;
   }
 
   import OfferCrudComponent from './OfferCrudComponent.vue';
@@ -41,13 +42,14 @@
     data.forEach(crud => this.cruds.push(new Crud(crud)));
 
       },
-  async update(id, name,costo_mensile,descrizione,data_inizio,data_fine) {
-    await this.$http.put(`/user/myoffers/${id}`, { name,costo_mensile,descrizione,data_inizio,data_fine});
+  async update(id, name,costo_mensile,descrizione,data_inizio,data_fine,categories) {
+    await this.$http.put(`/user/myoffers/${id}`, { name,costo_mensile,descrizione,data_inizio,data_fine,categories});
     this.cruds.find(crud => crud.id === id).name = name;
     this.cruds.find(crud => crud.id === id).costo_mensile = descrizione;
     this.cruds.find(crud => crud.id === id).descrizione = descrizione;
     this.cruds.find(crud => crud.id === id).data_inizio = data_inizio;
     this.cruds.find(crud => crud.id === id).data_fine = data_fine;
+    this.cruds.find(crud => crud.id === id).categories = categories;
     // this.cruds.find(crud => crud.id === id).backimg = backimg;
 
   },
