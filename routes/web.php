@@ -39,10 +39,11 @@ Route::prefix('user')
 
     Route::resource('myoffers', 'CrudOfferController');
     Route::resource('myleads', 'CrudLeadController');
+    Route::get('admin','OperatorController@admin');
     // l'ho dovuto mettere qui anche se api senno non potevo usare Auth::id(), problema col token/laravel passport?
 
         //Route::get('/dashboard','DashboardController@dashboard')->name('dashboard');
-    Route::get('dashboard', 'OperatorController')->name('admin-dashboard');
+    Route::get('dashboard', 'OperatorController@viewAdmin')->name('admin-dashboard');
     Route::resource('offers', 'OfferController');
     Route::get('/offerscrud', function () {
         return view('user.offers.crud-offer');

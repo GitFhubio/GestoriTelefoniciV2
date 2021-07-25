@@ -12,6 +12,9 @@
       @delete="del"
     ></admincrud-component>
     </div>
+    <div class="text-center">
+        <router-link to="/user/dashboard">Torna alla dashboard</router-link>
+    </div>
     </div>
 </template>
 

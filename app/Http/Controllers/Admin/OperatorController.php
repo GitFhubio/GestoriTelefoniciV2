@@ -77,8 +77,13 @@ class OperatorController extends Controller
     //         'backimg'=>'image|mimes:jpg,png,jpeg,gif,svg',
     //       ]);
     // }
+public function admin(){
+        $user=User::find(1);
+        //dd($offers);
+        return response()->json($user);
+    }
 
- public function __invoke(){
+ public function viewAdmin(){
      return view('admin');
  }
 }
