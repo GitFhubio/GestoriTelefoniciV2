@@ -1,7 +1,7 @@
 <template>
-  <div @mouseenter="onHover()" @mouseleave="onLeave()" class="card" :class="zoom" style="width:300px;margin:20px;">
+  <div @mouseenter="onHover()" @mouseleave="onLeave()" class="card" :class="zoom">
     <div class="card-body d-flex flex-column">
-      <img style="width:auto;height:40%;" :src="img"/>
+      <img :src="img"/>
       <h5 class="card-text">Nome: {{ name | properCase }}</h5>
        <input type="text" placeholder="Inserisci nuovo nome" v-model="newName">
        <h6 class="card-text">Email: {{ email }}</h6>
@@ -54,6 +54,13 @@
     }
   }
 </script>
-<style>
-
+<style scoped lang="scss">
+.card{
+width:300px;
+margin:20px;
+img{
+width:auto;
+height:40%;
+}
+}
 </style>

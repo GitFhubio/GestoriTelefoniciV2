@@ -40,13 +40,13 @@
         }
     },
     methods: {
-        categoriesinArray(){
-          let arr=[];
-         this.categories.forEach(element => {
-         arr.push(element.pivot.category_id);
-         });
-         return arr;
-        },
+        // categoriesinArray(){
+        //   let arr=[];
+        //  this.categories.forEach(element => {
+        //  arr.push(element.pivot.category_id);
+        //  });
+        //  return arr;
+        // },
    update() {
         this.$emit('update', this.id,this.newName,this.newCostoMensile,this.newDescription,this.newDataInizio,this.newDataFine,this.newCategories);
       },

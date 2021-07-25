@@ -12,8 +12,8 @@
       @delete="del"
     ></admincrud-component>
     </div>
-    <div class="text-center">
-        <router-link to="/user/dashboard">Torna alla dashboard</router-link>
+    <div class="goback text-center">
+        <router-link to="/user/dashboard"  class="goldbtn">Torna alla dashboard</router-link>
     </div>
     </div>
 </template>
@@ -69,3 +69,13 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+.goback{
+    height:80px;
+    margin-top:30px;
+.goldbtn{
+    padding:10px;
+}
+}
+</style>
