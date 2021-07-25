@@ -1,5 +1,5 @@
 <template>
-  <div class="card" style="width:300px;margin:20px;">
+  <div class="card">
     <div class="card-body">
       <h5>Offerta: {{ offer_id }}</h5>
        <h6>Nome: {{ nome | properCase }}</h6>
@@ -30,6 +30,14 @@
     }
   }
 </script>
-<style>
 
+<style lang="scss" scoped>
+
+.card{
+width:400px;
+margin:20px;
+background-image:url('https://cutewallpaper.org/21/black-orange-background/Orange-yellow-and-black-abstract-business-background-Vector-.jpg');
+background-size: 120%;
+background-position:left center;
+}
 </style>

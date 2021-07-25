@@ -1,5 +1,5 @@
 <template>
-  <div class="card" style="width:500px;margin:20px;">
+  <div class="card">
     <div class="card-body d-flex flex-column">
       <label for="name">Nome:{{name}}</label>
        <input type="text" name="name" placeholder="Inserisci nuovo nome" v-model="newName">
@@ -67,6 +67,14 @@
     }
   }
 </script>
-<style>
+<style lang="scss" scoped>
 
+.card{
+    width:500px;
+    margin:20px;
+background-image:url('https://freerangestock.com/sample/25036/orange-gradient.jpg');
+background-position: left center;
+background-size: cover
+}
 </style>
+
