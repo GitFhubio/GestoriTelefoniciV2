@@ -1988,7 +1988,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'AdminCrudComponent',
   data: function data() {
@@ -2930,8 +2929,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
 //
 //
 //
@@ -40578,13 +40575,23 @@ var render = function() {
         _c("input", {
           attrs: { type: "file", name: "img", multiple: "" },
           on: { change: _vm.onFileChange }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "buttons" }, [
-        _c("button", { on: { click: _vm.update } }, [_vm._v("Update")]),
+        }),
         _vm._v(" "),
-        _c("button", { on: { click: _vm.del } }, [_vm._v("Delete")])
+        _c(
+          "div",
+          { staticClass: "buttons", staticStyle: { "margin-top": "10px" } },
+          [
+            _c(
+              "button",
+              { staticClass: "goldbtn", on: { click: _vm.update } },
+              [_vm._v("Update")]
+            ),
+            _vm._v(" "),
+            _c("button", { staticClass: "goldbtn", on: { click: _vm.del } }, [
+              _vm._v("Delete")
+            ])
+          ]
+        )
       ])
     ]
   )
@@ -41398,7 +41405,9 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("div", { staticClass: "d-flex justify-content-center" }, [
-      _c("button", { on: { click: _vm.create } }, [_vm._v("Add new offer")])
+      _c("button", { staticClass: "goldbtn", on: { click: _vm.create } }, [
+        _vm._v("Add new offer")
+      ])
     ])
   ])
 }
@@ -41434,203 +41443,209 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "card", staticStyle: { width: "500px", margin: "20px" } },
-      [
-        _c("div", { staticClass: "card-body d-flex flex-column" }, [
-          _c("label", { attrs: { for: "name" } }, [
-            _vm._v("Nome:" + _vm._s(_vm.name))
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.newName,
-                expression: "newName"
-              }
-            ],
-            attrs: {
-              type: "text",
-              name: "name",
-              placeholder: "Inserisci nuovo nome"
-            },
-            domProps: { value: _vm.newName },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.newName = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "costomensile" } }, [
-            _vm._v("Costo mensile: " + _vm._s(_vm.costo_mensile) + " €")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.newCostoMensile,
-                expression: "newCostoMensile"
-              }
-            ],
-            attrs: {
-              type: "number",
-              name: "costomensile",
-              placeholder: "Inserisci nuovo costo mensile"
-            },
-            domProps: { value: _vm.newCostoMensile },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.newCostoMensile = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "descrizione" } }, [
-            _vm._v("Descrizione:" + _vm._s(_vm.descrizione) + " ")
-          ]),
-          _vm._v(" "),
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.newDescription,
-                expression: "newDescription"
-              }
-            ],
-            attrs: { type: "text" },
-            domProps: { value: _vm.newDescription },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.newDescription = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "datainizio" } }, [
-            _vm._v("Data inizio:" + _vm._s(_vm.data_inizio))
-          ]),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.newDataInizio,
-                expression: "newDataInizio"
-              }
-            ],
-            attrs: { type: "date" },
-            domProps: { value: _vm.newDataInizio },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.newDataInizio = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "datafine" } }, [
-            _vm._v("Data fine:" + _vm._s(_vm.data_fine))
-          ]),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.newDataFine,
-                expression: "newDataFine"
-              }
-            ],
-            attrs: { type: "date" },
-            domProps: { value: _vm.newDataFine },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.newDataFine = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "categories" } }, [
-            _vm._v(" Categorie:")
-          ]),
-          _vm._v(" "),
-          _c(
-            "ul",
-            { staticStyle: { "list-style": "none" } },
-            _vm._l(_vm.categories, function(el, ind) {
-              return _c("li", { key: ind }, [
-                _vm._v(_vm._s(el.pivot.category_id))
-              ])
-            }),
-            0
-          ),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.newCategories,
-                  expression: "newCategories"
-                }
-              ],
-              attrs: { name: "categories[]", id: "", multiple: "" },
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.newCategories = $event.target.multiple
-                    ? $$selectedVal
-                    : $$selectedVal[0]
-                }
-              }
-            },
-            _vm._l([1, 2, 3, 4, 5], function(val) {
-              return _c("option", { key: val, domProps: { value: val } }, [
-                _vm._v(_vm._s(val))
-              ])
-            }),
-            0
-          )
+  return _c(
+    "div",
+    { staticClass: "card", staticStyle: { width: "500px", margin: "20px" } },
+    [
+      _c("div", { staticClass: "card-body d-flex flex-column" }, [
+        _c("label", { attrs: { for: "name" } }, [
+          _vm._v("Nome:" + _vm._s(_vm.name))
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "buttons" }, [
-          _c("button", { on: { click: _vm.update } }, [_vm._v("Update")]),
-          _vm._v(" "),
-          _c("button", { on: { click: _vm.del } }, [_vm._v("Delete")])
-        ])
-      ]
-    )
-  ])
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newName,
+              expression: "newName"
+            }
+          ],
+          attrs: {
+            type: "text",
+            name: "name",
+            placeholder: "Inserisci nuovo nome"
+          },
+          domProps: { value: _vm.newName },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.newName = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "costomensile" } }, [
+          _vm._v("Costo mensile: " + _vm._s(_vm.costo_mensile) + " €")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newCostoMensile,
+              expression: "newCostoMensile"
+            }
+          ],
+          attrs: {
+            type: "number",
+            name: "costomensile",
+            placeholder: "Inserisci nuovo costo mensile"
+          },
+          domProps: { value: _vm.newCostoMensile },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.newCostoMensile = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "descrizione" } }, [
+          _vm._v("Descrizione:" + _vm._s(_vm.descrizione) + " ")
+        ]),
+        _vm._v(" "),
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newDescription,
+              expression: "newDescription"
+            }
+          ],
+          attrs: { type: "text" },
+          domProps: { value: _vm.newDescription },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.newDescription = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "datainizio" } }, [
+          _vm._v("Data inizio:" + _vm._s(_vm.data_inizio))
+        ]),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newDataInizio,
+              expression: "newDataInizio"
+            }
+          ],
+          attrs: { type: "date" },
+          domProps: { value: _vm.newDataInizio },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.newDataInizio = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "datafine" } }, [
+          _vm._v("Data fine:" + _vm._s(_vm.data_fine))
+        ]),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newDataFine,
+              expression: "newDataFine"
+            }
+          ],
+          attrs: { type: "date" },
+          domProps: { value: _vm.newDataFine },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.newDataFine = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "categories" } }, [_vm._v(" Categorie:")]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticStyle: { "list-style": "none" } },
+          _vm._l(_vm.categories, function(el, ind) {
+            return _c("li", { key: ind }, [
+              _vm._v(_vm._s(el.pivot.category_id))
+            ])
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newCategories,
+                expression: "newCategories"
+              }
+            ],
+            attrs: { name: "categories[]", id: "", multiple: "" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.newCategories = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              }
+            }
+          },
+          _vm._l([1, 2, 3, 4, 5], function(val) {
+            return _c("option", { key: val, domProps: { value: val } }, [
+              _vm._v(_vm._s(val))
+            ])
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "buttons", staticStyle: { "margin-top": "10px" } },
+          [
+            _c(
+              "button",
+              { staticClass: "goldbtn", on: { click: _vm.update } },
+              [_vm._v("Update")]
+            ),
+            _vm._v(" "),
+            _c("button", { staticClass: "goldbtn", on: { click: _vm.del } }, [
+              _vm._v("Delete")
+            ])
+          ]
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -11863,14 +11863,14 @@ main {
 
 .goldbtn {
   cursor: pointer;
-  padding: 10px;
+  border: none;
+  padding: 2px 5px;
   border-radius: 10px;
-  background-color: gold;
-  font-weight: 500;
+  background-color: rgba(255, 215, 0, 0.7);
 }
 
 .goldbtn:hover {
-  background-color: rgba(255, 215, 0, 0.8);
+  background-color: gold;
 }
 
 

@@ -31,11 +31,11 @@ class CrudOfferController extends Controller
     public function create(Generator $faker)
     {
       $crud = new Offer();
-      $crud->name = $faker->lexify('');
+      $crud->name = '';
       $crud->costo_mensile = 0;
       $crud->descrizione ='';
-      $crud->data_inizio = $faker->date();
-      $crud->data_fine= $faker->date();
+      $crud->data_inizio = date("Y/m/d");
+      $crud->data_fine= date("Y/m/d",strtotime("+92 day"));
       $crud->user_id = Auth::user()->id;
       $crud->save();
       return response($crud->jsonSerialize(), Response::HTTP_CREATED);

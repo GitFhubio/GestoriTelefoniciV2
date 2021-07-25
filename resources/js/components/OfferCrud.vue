@@ -13,7 +13,7 @@
     ></offercrud-component>
     </div>
     <div class="d-flex justify-content-center">
-      <button @click="create">Add new offer</button>
+      <button  class="goldbtn"  @click="create">Add new offer</button>
     </div>
     </div>
 </template>

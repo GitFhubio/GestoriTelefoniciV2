@@ -8,11 +8,10 @@
       <input type="text" placeholder="Inserisci nuova email" v-model="newEmail">
       <label for="img">Carica nuovo avatar</label>
       <input type="file"  name= "img" multiple @change="onFileChange">
+          <div class="buttons" style="margin-top:10px;">
+     <button class="goldbtn" @click="update">Update</button>
+     <button class="goldbtn" @click="del">Delete</button>
     </div>
-
-    <div class="buttons">
-     <button  @click="update">Update</button>
-     <button @click="del">Delete</button>
     </div>
     </div>
 </template>

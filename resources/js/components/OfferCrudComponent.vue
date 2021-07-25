@@ -1,5 +1,4 @@
 <template>
-        <div>
   <div class="card" style="width:500px;margin:20px;">
     <div class="card-body d-flex flex-column">
       <label for="name">Nome:{{name}}</label>
@@ -20,10 +19,9 @@
        <select name="categories[]" id="" multiple v-model="newCategories">
         <option :value="val" v-for="val in [1,2,3,4,5]"  :key=val>{{val}}</option>
     </select>
-    </div>
-        <div class="buttons">
-     <button @click="update">Update</button>
-      <button @click="del">Delete</button>
+            <div class="buttons" style="margin-top:10px;">
+     <button  class="goldbtn" @click="update">Update</button>
+      <button   class="goldbtn" @click="del">Delete</button>
     </div>
     </div>
     </div>

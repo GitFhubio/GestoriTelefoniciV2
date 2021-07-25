@@ -49,12 +49,12 @@
   }
   @mixin goldBtn {
     cursor:pointer;
-    padding:10px;
+    border:none;
+    padding:2px 5px;
     border-radius:10px;
-    background-color: rgba(gold,1);
-    font-weight: $font_weight_title / 0.6;
+    background-color: rgba(gold,0.7);
     &:hover {
-      background-color: rgba(gold,0.8);
+      background-color: rgba(gold,1);
     }
   }
 
