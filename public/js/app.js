@@ -1996,7 +1996,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       newName: '',
-      newEmail: ''
+      newEmail: '',
+      zoom: 'zoom-off'
     };
   },
   methods: {
@@ -2011,6 +2012,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     del: function del() {
       this.$emit('delete', this.id);
+    },
+    onHover: function onHover() {
+      this.zoom = 'zoom-on';
+    },
+    onLeave: function onLeave() {
+      this.zoom = 'zoom-off';
     }
   },
   props: ['id', 'name', 'email', 'img'],
@@ -2245,13 +2252,13 @@ __webpack_require__.r(__webpack_exports__);
         icon: 'fab fa-linkedin-in',
         name: 'linkedin'
       }],
-      posts: ['The best protein shake', 'Ultimate cardio workout', 'New juices available now', 'Tips to find training partners', '20 best healthy recipes'],
+      posts: ['Which offer is right for you?', 'The best cell phone deals', 'New offers available now', 'The people who think coronavirus is caused by 5G ', '20 best 5G offers'],
       contacts: {
-        address: '4746 Tipple Road Michigan 48449',
-        mobile: "1.800.000.000",
-        email: "info@your-company.com"
+        address: 'Via della pace 8, Roccapiemonte(SA)',
+        mobile: "3921533405",
+        email: "info@gestoritelefonici"
       },
-      rights: ['© Copyright 2012 - 2021', 'Avada theme by <span>ThemeFusion</span>', 'All rights reserved', 'Powered by <span>WordPress</span>']
+      rights: ['© Copyright 2012 - 2021', 'Avada theme by <span>ThemeFusion</span>', 'All rights reserved', 'Powered by <span>fabiomovic</span>']
     };
   },
   mounted: function mounted() {
@@ -2991,42 +2998,14 @@ __webpack_require__.r(__webpack_exports__);
       newDescription: '',
       newDataInizio: '',
       newDataFine: '',
-      newCategories: [] //    categoriesID:[]
-
+      newCategories: [],
+      categoryNames: ['Adsl', 'Fibra', '5G', 'Mobile', 'Estero']
     };
   },
   methods: {
     categoriesinArray: function categoriesinArray() {
       var arr = [];
       this.categories.forEach(function (element) {
-        var category_name = '';
-
-        switch (element.pivot.category_id) {
-          case 1:
-            category_name = 'ADSL';
-            break;
-
-          case 2:
-            category_name = 'Fibra';
-            break;
-
-          case 3:
-            category_name = '5G';
-            break;
-
-          case 4:
-            category_name = 'Mobile';
-            break;
-
-          case 5:
-            category_name = 'Estero';
-            break;
-
-          default:
-            break;
-        } //  this.categoriesID.push(element.pivot.category_id);
-
-
         arr.push(element.pivot.category_id);
       });
       return arr;
@@ -40548,7 +40527,19 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "card", staticStyle: { width: "300px", margin: "20px" } },
+    {
+      staticClass: "card",
+      class: _vm.zoom,
+      staticStyle: { width: "300px", margin: "20px" },
+      on: {
+        mouseenter: function($event) {
+          return _vm.onHover()
+        },
+        mouseleave: function($event) {
+          return _vm.onLeave()
+        }
+      }
+    },
     [
       _c("div", { staticClass: "card-body d-flex flex-column" }, [
         _c("img", {
@@ -40620,11 +40611,11 @@ var render = function() {
             _c(
               "button",
               { staticClass: "goldbtn", on: { click: _vm.update } },
-              [_vm._v("Update")]
+              [_vm._v("Aggiorna ")]
             ),
             _vm._v(" "),
             _c("button", { staticClass: "goldbtn", on: { click: _vm.del } }, [
-              _vm._v("Delete")
+              _vm._v("Cancella")
             ])
           ]
         )
@@ -40833,7 +40824,7 @@ var render = function() {
           _vm._v(" "),
           _c("p", [
             _vm._v(
-              "Ac aliquam neque sagittis diam faucibus vitae purus turpis phasellus. Pellentesque consectetur amet purus ultrices mauris."
+              "Dedicati esperti per ogni tipo di emergenza sono a disposizione 24/7 e pronti ad offrire rapidamente le migliori soluzioni per connetterti con i tuoi amici."
             )
           ]),
           _vm._v(" "),
@@ -41157,7 +41148,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c("div", { staticClass: "heading" }, [
+      _c("h1", { staticClass: "text-center" }, [
+        _vm._v(_vm._s(_vm.cruds.length > 0 ? "I tuoi leads" : "Non hai leads"))
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -41177,16 +41172,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "heading" }, [
-      _c("h1", { staticClass: "text-center" }, [_vm._v("Lista leads")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -41455,7 +41441,13 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c("div", { staticClass: "heading" }, [
+      _c("h1", { staticClass: "text-center" }, [
+        _vm._v(
+          _vm._s(_vm.cruds.length > 0 ? "Le tue offerte" : "Non hai offerte")
+        )
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -41476,21 +41468,12 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "d-flex justify-content-center" }, [
       _c("button", { staticClass: "goldbtn", on: { click: _vm.create } }, [
-        _vm._v("Add new offer")
+        _vm._v("Aggiungi nuova offerta")
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "heading" }, [
-      _c("h1", { staticClass: "text-center" }, [_vm._v("Le tue offerte")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -41656,7 +41639,7 @@ var render = function() {
           { staticStyle: { "list-style": "none" } },
           _vm._l(_vm.categories, function(el, ind) {
             return _c("li", { key: ind }, [
-              _vm._v(_vm._s(el.pivot.category_id))
+              _vm._v(_vm._s(_vm.categoryNames[el.pivot.category_id]))
             ])
           }),
           0
@@ -41692,7 +41675,7 @@ var render = function() {
           },
           _vm._l([1, 2, 3, 4, 5], function(val) {
             return _c("option", { key: val, domProps: { value: val } }, [
-              _vm._v(_vm._s(val))
+              _vm._v(_vm._s(_vm.categoryNames[val]))
             ])
           }),
           0
@@ -41705,11 +41688,11 @@ var render = function() {
             _c(
               "button",
               { staticClass: "goldbtn", on: { click: _vm.update } },
-              [_vm._v("Update")]
+              [_vm._v("Aggiorna")]
             ),
             _vm._v(" "),
             _c("button", { staticClass: "goldbtn", on: { click: _vm.del } }, [
-              _vm._v("Delete")
+              _vm._v("Cancella")
             ])
           ]
         )

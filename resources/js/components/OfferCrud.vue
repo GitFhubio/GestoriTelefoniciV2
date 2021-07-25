@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="heading">
-      <h1 class="text-center">Le tue offerte</h1>
+      <h1 class="text-center">{{cruds.length>0 ? 'Le tue offerte' : 'Non hai offerte'}}</h1>
     </div>
     <div class="d-flex flex-wrap justify-content-center">
     <offercrud-component
@@ -13,7 +13,7 @@
     ></offercrud-component>
     </div>
     <div class="d-flex justify-content-center">
-      <button  class="goldbtn"  @click="create">Add new offer</button>
+      <button  class="goldbtn"  @click="create">Aggiungi nuova offerta</button>
     </div>
     </div>
 </template>

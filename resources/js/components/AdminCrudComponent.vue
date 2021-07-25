@@ -1,5 +1,5 @@
 <template>
-  <div class="card" style="width:300px;margin:20px;">
+  <div @mouseenter="onHover()" @mouseleave="onLeave()" class="card" :class="zoom" style="width:300px;margin:20px;">
     <div class="card-body d-flex flex-column">
       <img style="width:auto;height:40%;" :src="img"/>
       <h5 class="card-text">Nome: {{ name | properCase }}</h5>
@@ -9,8 +9,8 @@
       <label for="img">Carica nuovo avatar</label>
       <input type="file"  name= "img" multiple @change="onFileChange">
           <div class="buttons" style="margin-top:10px;">
-     <button class="goldbtn" @click="update">Update</button>
-     <button class="goldbtn" @click="del">Delete</button>
+     <button class="goldbtn" @click="update">Aggiorna </button>
+     <button class="goldbtn" @click="del">Cancella</button>
     </div>
     </div>
     </div>
@@ -22,6 +22,7 @@
         return {
             newName:'',
              newEmail:'',
+             zoom:'zoom-off'
         }
     },
     methods: {
@@ -30,7 +31,6 @@
                let itemfile = files[0].name;
             //    console.log("images/"+itemfile)
                return "images/"+itemfile;
-
         },
    update() {
         this.$emit('update', this.id,this.newName,this.newEmail,this.onFileChange);
@@ -38,6 +38,12 @@
       del() {
         this.$emit('delete', this.id);
       },
+        onHover() {
+       this.zoom='zoom-on';
+    },
+    onLeave() {
+        this.zoom='zoom-off';
+     }
 
     },
     props: ['id', 'name','email','img'],

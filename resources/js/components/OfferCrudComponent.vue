@@ -11,17 +11,17 @@
        <label for="datafine">Data fine:{{data_fine}}</label><input type="date"  v-model="newDataFine">
         <label for="categories"> Categorie:</label>
         <ul style="list-style:none;">
-        <li v-for="(el,ind) in categories" :key=ind>{{el.pivot.category_id}}</li>
+        <li v-for="(el,ind) in categories" :key=ind>{{categoryNames[el.pivot.category_id]}}</li>
         </ul>
          <!-- v-model="newCategories" -->
          <!-- ['Adsl','Fibra','5G','Mobile','Estero'] -->
         <!-- :selected="categoriesinArray().includes(val) ? 'selected' :''" -->
        <select name="categories[]" id="" multiple v-model="newCategories">
-        <option :value="val" v-for="val in [1,2,3,4,5]"  :key=val>{{val}}</option>
+        <option :value="val" v-for="val in [1,2,3,4,5]"  :key=val>{{categoryNames[val]}}</option>
     </select>
             <div class="buttons" style="margin-top:10px;">
-     <button  class="goldbtn" @click="update">Update</button>
-      <button   class="goldbtn" @click="del">Delete</button>
+     <button  class="goldbtn" @click="update">Aggiorna</button>
+      <button   class="goldbtn" @click="del">Cancella</button>
     </div>
     </div>
     </div>
@@ -36,36 +36,15 @@
            newDescription:'',
            newDataInizio:'',
            newDataFine:'',
-           newCategories:[]
-        //    categoriesID:[]
+           newCategories:[],
+           categoryNames:['Adsl','Fibra','5G','Mobile','Estero']
         }
     },
     methods: {
         categoriesinArray(){
           let arr=[];
          this.categories.forEach(element => {
- let category_name='';
- switch(element.pivot.category_id) {
-  case 1:
- category_name='ADSL';
-    break;
-  case 2:
-   category_name='Fibra';
-    break;
-      case 3:
-   category_name='5G';
-    break;
-      case 4:
-   category_name='Mobile';
-    break;
-      case 5:
-   category_name='Estero';
-    break;
-  default:
-  break;
-}
-//  this.categoriesID.push(element.pivot.category_id);
- arr.push(element.pivot.category_id);
+         arr.push(element.pivot.category_id);
          });
          return arr;
         },

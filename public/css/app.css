@@ -11873,4 +11873,18 @@ main {
   background-color: gold;
 }
 
+.heading {
+  padding-top: 20px;
+}
+
+.zoom-on {
+  transition: transform 0.2s;
+  transform: scale(1.1);
+}
+
+.zoom-off {
+  transition: transform 0.2s;
+  transform: scale(1);
+}
+
 

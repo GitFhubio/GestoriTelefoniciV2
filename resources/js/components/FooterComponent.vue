@@ -4,7 +4,7 @@
       <div class="footer-top">
         <div class="brand-section">
           <img :src=img_path alt="Avada logo">
-          <p>Ac aliquam neque sagittis diam faucibus vitae purus turpis phasellus. Pellentesque consectetur amet purus ultrices mauris.</p>
+          <p>Dedicati esperti per ogni tipo di emergenza sono a disposizione 24/7 e pronti ad offrire rapidamente le migliori soluzioni per connetterti con i tuoi amici.</p>
           <ul class="socialNetworks">
             <li v-for="(social,index) in socialIcons" :key=index><i :class="social.icon" @mouseenter="showNameSocial(index)" @mouseleave="hideNameSocial"></i>
               <div v-if="indexSocial === index" class="dropdown">
@@ -52,16 +52,16 @@
               { icon: 'fab fa-instagram',name:'instagram' },
               { icon: 'fab fa-linkedin-in',name:'linkedin' }
             ],
-            posts:['The best protein shake','Ultimate cardio workout','New juices available now','Tips to find training partners','20 best healthy recipes'
+            posts:['Which offer is right for you?','The best cell phone deals','New offers available now','The people who think coronavirus is caused by 5G ','20 best 5G offers'
           ],
-          contacts:{address: '4746 Tipple Road Michigan 48449',
-          mobile:"1.800.000.000",
-          email:"info@your-company.com"},
+          contacts:{address: 'Via della pace 8, Roccapiemonte(SA)',
+          mobile:"3921533405",
+          email:"info@gestoritelefonici"},
           rights:[
             '© Copyright 2012 - 2021',
             'Avada theme by <span>ThemeFusion</span>',
             'All rights reserved',
-            'Powered by <span>WordPress</span>'
+            'Powered by <span>fabiomovic</span>'
           ]
       }},
         mounted() {
