@@ -57,3 +57,4 @@ Route::prefix('user')
     // })->where('any','.*');
 
     // Route::get('/{any}', 'HomeController@index')->where('any','.*');
+

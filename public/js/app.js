@@ -2004,10 +2004,28 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     onFileChange: function onFileChange(e) {
       var file = e.target.files[0];
-      this.url = URL.createObjectURL(file);
+      this.url = URL.createObjectURL(file); //   console.log(location.origin+'/images'+this.url.slice(this.url.indexOf('/')+1));
+      //   console.log('/images/'+this.url.slice(this.url.lastIndexOf('/')+1));
     },
     update: function update() {
-      this.$emit('update', this.id, this.newName, this.newEmail, 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/1200px-Google_Chrome_icon_%28September_2014%29.svg.png');
+      //    https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/1200px-Google_Chrome_icon_%28September_2014%29.svg.png
+      this.$emit('update', this.id, this.newName, this.newEmail, '/images/' + this.url.slice(this.url.lastIndexOf('/') + 1));
+      var data = new FormData();
+      var file = this.$refs.fileInput.files[0];
+      data.append('my_file', file); // data.append('my_id', this.id)
+
+      this.$http.put('/api/myoperators/' + this.id, {
+        params: {
+          data: data
+        },
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      }).then(function (response) {
+        console.log(response.data);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     },
     del: function del() {
       this.$emit('delete', this.id);
@@ -41238,6 +41256,7 @@ var render = function() {
         _c("label", { attrs: { for: "img" } }, [_vm._v("Carica nuovo avatar")]),
         _vm._v(" "),
         _c("input", {
+          ref: "fileInput",
           attrs: { type: "file", name: "img" },
           on: { change: _vm.onFileChange }
         }),

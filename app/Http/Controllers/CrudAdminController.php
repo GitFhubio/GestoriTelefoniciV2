@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 // use App\Crud;
 use App\User;
 use Faker\Generator;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
 
 class CrudAdminController extends Controller
 {
@@ -25,15 +27,17 @@ class CrudAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function create(Generator $faker)
-    // {
-    //     $crud = new Crud();
-    //     $crud->name = $faker->lexify('????????');
-    //     $crud->color = $faker->boolean ? 'red' : 'green';
-    //     $crud->save();
+    public function create(Generator $faker)
+    {
+        $crud=new User();
+        $crud->name='test';
+        $crud->email='test@outlook.it';
+        $crud->password = Hash::make('beinformatica');
+        $crud->api_token = Str::random(60);
+        $crud->save();
 
-    //     return response($crud->jsonSerialize(), Response::HTTP_CREATED);
-    // }
+        return response($crud->jsonSerialize(), Response::HTTP_CREATED);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -43,7 +47,6 @@ class CrudAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -80,7 +83,12 @@ class CrudAdminController extends Controller
       $crud = User::findOrFail($id);
       $crud->name = $request->name;
       $crud->email = $request->email;
-      $crud->img = $request->img;
+      if ($request->hasFile('my_file')) {
+        $crud->img= $request->file('my_file')->store('images');
+    }
+     else {
+        $crud->img = null;
+     }
       $crud->save();
 
       return response(null, Response::HTTP_OK);

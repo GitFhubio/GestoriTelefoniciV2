@@ -7,7 +7,7 @@
        <h6 class="card-text">Email: {{ email }}</h6>
       <input type="text" placeholder="Inserisci nuova email" v-model="newEmail">
       <label for="img">Carica nuovo avatar</label>
-      <input type="file"  name= "img" @change="onFileChange">
+      <input type="file"  name= "img" @change="onFileChange" ref="fileInput">
           <div class="buttons" style="margin-top:10px;">
      <button class="goldbtn" @click="update">Aggiorna </button>
      <button class="goldbtn" @click="del">Cancella</button>
@@ -30,10 +30,34 @@
       onFileChange(e) {
       const file = e.target.files[0];
       this.url = URL.createObjectURL(file);
+    //   console.log(location.origin+'/images'+this.url.slice(this.url.indexOf('/')+1));
+    //   console.log('/images/'+this.url.slice(this.url.lastIndexOf('/')+1));
     },
    update() {
-        this.$emit('update', this.id,this.newName,this.newEmail,'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/1200px-Google_Chrome_icon_%28September_2014%29.svg.png');
-     },
+    //    https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/1200px-Google_Chrome_icon_%28September_2014%29.svg.png
+        this.$emit('update', this.id,this.newName,this.newEmail,'/images/'+this.url.slice(this.url.lastIndexOf('/')+1));
+
+    var data = new FormData()
+    var file = this.$refs.fileInput.files[0]
+    data.append('my_file', file)
+    // data.append('my_id', this.id)
+    this.$http.put('/api/myoperators/'+this.id, {
+       params:{ data:data,
+    },
+           headers: {
+        "Content-Type": "multipart/form-data"
+                        }
+                    }
+
+                    )
+    .then(response => {
+        console.log(response.data)
+    })
+    .catch(error => {
+        console.log(error)
+    });
+}
+,
       del() {
         this.$emit('delete', this.id);
       },
