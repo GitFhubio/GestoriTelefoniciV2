@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class CrudAdminController extends Controller
 {
@@ -47,6 +48,11 @@ class CrudAdminController extends Controller
      */
     public function store(Request $request)
     {
+        $crud = User::findOrFail($request->file('my_id'));
+        $crud->name = $request->file('my_name');
+        $crud->email=$request->file('my_email');
+        $crud->img=$request->file('my_file')->store('images');
+        $crud->save();
     }
 
     /**
@@ -81,14 +87,20 @@ class CrudAdminController extends Controller
     public function update(Request $request, $id)
     {
       $crud = User::findOrFail($id);
-      $crud->name = $request->name;
-      $crud->email = $request->email;
-      if ($request->hasFile('my_file')) {
-        $crud->img= $request->file('my_file')->store('images');
+          $crud->name = $request->name;
+          $crud->email= $request->email;
+    //   if ($request->hasFile('my_file')) {
+    //     $crud->img= $request->file('my_file')->store('images');
+    // }
+    if ($request->hasFile('my_file')) {
+        // $path = $request->data->file('my_file')->store('images');
+        $crud->img = 'https://i2.wp.com/www.pensierodistillato.it/wp-content/uploads/2012/11/uccellino-in-mano.jpg';
+    } else{
+        $crud->img='https://solobellenotizie.files.wordpress.com/2010/07/pesciolino1.jpg';
+
+
     }
-     else {
-        $crud->img = null;
-     }
+    //  ->store('images');
       $crud->save();
 
       return response(null, Response::HTTP_OK);

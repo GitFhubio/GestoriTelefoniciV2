@@ -26,7 +26,7 @@
         .get('admin')
         .then((response) => {
             this.admin=response.data;
-            console.log(this.admin);
+            // console.log(this.admin);
         })
   }
   }

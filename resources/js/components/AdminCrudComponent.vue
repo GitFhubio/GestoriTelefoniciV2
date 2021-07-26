@@ -7,7 +7,7 @@
        <h6 class="card-text">Email: {{ email }}</h6>
       <input type="text" placeholder="Inserisci nuova email" v-model="newEmail">
       <label for="img">Carica nuovo avatar</label>
-      <input type="file"  name= "img" @change="onFileChange" ref="fileInput">
+      <input type="file"  name= "img" @change="onFileChange" ref="fileInput" >
           <div class="buttons" style="margin-top:10px;">
      <button class="goldbtn" @click="update">Aggiorna </button>
      <button class="goldbtn" @click="del">Cancella</button>
@@ -34,18 +34,27 @@
     //   console.log('/images/'+this.url.slice(this.url.lastIndexOf('/')+1));
     },
    update() {
+     var datas = new FormData();
+    const file = this.$refs.fileInput.files[0];
+    datas.append('my_file', file);
+       datas.append('my_name', this.newName);
+        datas.append('my_email', this.newEmail);
+        // datas.append('_method', 'PUT')
+    console.log(datas.get('my_file'));
     //    https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/1200px-Google_Chrome_icon_%28September_2014%29.svg.png
-        this.$emit('update', this.id,this.newName,this.newEmail,'/images/'+this.url.slice(this.url.lastIndexOf('/')+1));
+        this.$emit('update', this.id,this.newName,this.newEmail
+        // ,datas
+        );
 
-    var data = new FormData()
-    var file = this.$refs.fileInput.files[0]
-    data.append('my_file', file)
-    // data.append('my_id', this.id)
-    this.$http.put('/api/myoperators/'+this.id, {
-       params:{ data:data,
+    // data.append('my_name', this.newName)
+    // data.append('my_email',this.newEmail)
+    datas.append('my_id', this.id);
+    //  datas.append('_method', 'POST')
+     this.$http.post('/api/myoperators/', {
+       params:{ data:datas,
     },
            headers: {
-        "Content-Type": "multipart/form-data"
+      'Content-Type': `multipart/form-data; boundary=${datas._boundary}`,
                         }
                     }
 
@@ -54,7 +63,7 @@
         console.log(response.data)
     })
     .catch(error => {
-        console.log(error)
+        console.log(error.response.data)
     });
 }
 ,

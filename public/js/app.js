@@ -1887,7 +1887,8 @@ function Crud(_ref) {
         }, _callee);
       }))();
     },
-    update: function update(id, name, email, img) {
+    update: function update(id, name, email //   ,datas
+    ) {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -1898,22 +1899,27 @@ function Crud(_ref) {
                 _context2.next = 2;
                 return _this2.$http.put("/api/myoperators/".concat(id), {
                   name: name,
-                  email: email,
-                  img: img
-                });
+                  email: email // ,datas
+
+                } //  { headers: { "Content-Type":"multipart/form-data" }
+                //  }
+                //      { headers: { "Content-Type":"application/x-www-form-urlencoded" }
+                //  }
+                );
 
               case 2:
+                //   console.log(datas.get('my_file'));
+                //   console.log(datas.get('my_name'));
+                //   console.log(datas.get('my_email'));
                 _this2.cruds.find(function (crud) {
                   return crud.id === id;
                 }).name = name;
                 _this2.cruds.find(function (crud) {
                   return crud.id === id;
-                }).email = email;
-                _this2.cruds.find(function (crud) {
-                  return crud.id === id;
-                }).img = img; // this.cruds.find(crud => crud.id === id).backimg = backimg;
+                }).email = email; // this.cruds.find(crud => crud.id === id).img = null;
+                // this.cruds.find(crud => crud.id === id).backimg = backimg;
 
-              case 5:
+              case 4:
               case "end":
                 return _context2.stop();
             }
@@ -2008,23 +2014,31 @@ __webpack_require__.r(__webpack_exports__);
       //   console.log('/images/'+this.url.slice(this.url.lastIndexOf('/')+1));
     },
     update: function update() {
-      //    https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/1200px-Google_Chrome_icon_%28September_2014%29.svg.png
-      this.$emit('update', this.id, this.newName, this.newEmail, '/images/' + this.url.slice(this.url.lastIndexOf('/') + 1));
-      var data = new FormData();
+      var datas = new FormData();
       var file = this.$refs.fileInput.files[0];
-      data.append('my_file', file); // data.append('my_id', this.id)
+      datas.append('my_file', file);
+      datas.append('my_name', this.newName);
+      datas.append('my_email', this.newEmail); // datas.append('_method', 'PUT')
 
-      this.$http.put('/api/myoperators/' + this.id, {
+      console.log(datas.get('my_file')); //    https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/1200px-Google_Chrome_icon_%28September_2014%29.svg.png
+
+      this.$emit('update', this.id, this.newName, this.newEmail // ,datas
+      ); // data.append('my_name', this.newName)
+      // data.append('my_email',this.newEmail)
+
+      datas.append('my_id', this.id); //  datas.append('_method', 'POST')
+
+      this.$http.post('/api/myoperators/', {
         params: {
-          data: data
+          data: datas
         },
         headers: {
-          "Content-Type": "multipart/form-data"
+          'Content-Type': "multipart/form-data; boundary=".concat(datas._boundary)
         }
       }).then(function (response) {
         console.log(response.data);
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response.data);
       });
     },
     del: function del() {
@@ -2084,8 +2098,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('admin').then(function (response) {
-      _this.admin = response.data;
-      console.log(_this.admin);
+      _this.admin = response.data; // console.log(this.admin);
     });
   }
 });
