@@ -15,6 +15,10 @@
     <div class="d-flex justify-content-center">
       <button  class="goldbtn"  @click="create">Aggiungi nuova offerta</button>
     </div>
+        <select name="" id=""   v-model="selectedOption"   @input="changeOffer()" >
+    <option value="All" >Tutte le offerte</option>
+    <option v-for="crud in cruds" :key="crud.id" :value="crud.id">{{crud.name}}</option>
+    </select>
     </div>
 </template>
 
@@ -34,10 +38,15 @@
   export default {
     data() {
       return {
-        cruds: []
+            selectedOption: 0,
+        cruds: [],
       }
     },
     methods: {
+        changeOffer: function () {
+                console.log("child changed: " + this.selectedOption);
+                this.$emit('input', this.selectedOption);
+            },
         async read() {
          const {data} =await this.$http.get('/user/myoffers');
     // console.log(data);

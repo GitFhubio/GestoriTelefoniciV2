@@ -11,14 +11,16 @@ Vue.component('footer-component', require('./components/FooterComponent.vue').de
 Vue.component('item-component', require('./components/ItemComponent.vue').default);
 Vue.component('item-section', require('./components/ItemSection.vue').default);
 Vue.component('landing-page', require('./components/LandingPage.vue').default);
+Vue.component('category-component', require('./components/CategoryComponent.vue').default);
+Vue.component('operator-page', require('./components/OperatorPage.vue').default);
  import Vue from 'vue';
  import axios from 'axios';
  Vue.prototype.$http = axios;
     import router from './router';
     import App from './components/App';
     require('./bootstrap');
-
- Vue.prototype.$event =new Vue();  //sarebbe il mio bus
+ Vue.prototype.$event =new Vue();
+   //sarebbe il mio bus
     // const bus= new Vue();
      const app = new Vue({
        el: '#app',

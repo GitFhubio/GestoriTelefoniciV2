@@ -1,5 +1,4 @@
 @extends('layouts.base')
 @section('content')
-<offer-crud></offer-crud>
-<lead-crud></lead-crud>
+<operator-page></operator-page>
 @endsection

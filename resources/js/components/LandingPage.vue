@@ -12,7 +12,7 @@
     </div>
     <item-section :items="operators" class="section d-flex flex-wrap justify-content-center operatorsSection">
        </item-section>
-    <category-section :array="categories" class="section d-flex flex-wrap justify-content-center categoriesSection">
+    <category-section :array="categories" v-on:categoryselected="metodo" class="section d-flex flex-wrap justify-content-center categoriesSection">
     </category-section>
      <div class="section-title-container">
     <button class="text-center reset" @click="showAll" v-if="result">Torna a tutte le offerte</button>
@@ -71,15 +71,15 @@ mounted: function() {
 //    this.onSearch=data[1];
 //    this.selected=data[2];
 // })
-this.$event.$on('selCat',data=>{this.result=data;
-console.log(this.result);
-  axios
-            .get('api/categories/' + this.result.nome)
-            .then((response) => {
-                this.offers = response.data;
-            })
-}
-)
+// this.$event.$on('selCat',data=>{this.result=data;
+// console.log(this.result);
+//   axios
+//             .get('api/categories/' + this.result.nome)
+//             .then((response) => {
+//                 this.offers = response.data;
+//             })
+// }
+// )
 // this.$event.$emit('categoryselected', [this.result,true,category.nome])
 },
 methods:{
@@ -93,7 +93,16 @@ methods:{
         this.result=null;
         this.selected='';
     },
+    metodo(cat){
+        // alert('elleh');
+  axios
+            .get('api/categories/' + cat.nome)
+            .then((response) => {
+                this.offers = response.data;
+            })
+}
+    }
 }
 
-}
+
 </script>

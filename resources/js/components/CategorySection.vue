@@ -1,7 +1,7 @@
 <template>
         <div>
             <category-component v-for="(element,ind) in array"
-            :element=element :key=ind ></category-component>
+            :element=element :key=ind v-on:selCat="selectedCategory(element)"></category-component>
         </div>
                     <!-- v-on:selCat="selectedCategory(element)" -->
 </template>
@@ -19,14 +19,9 @@ import CategoryComponent from './CategoryComponent.vue'
               }
           },
           methods: {
-    // selectedCategory(category) {
-    //     axios
-    //         .get('api/categories/' + category.nome)
-    //         .then((response) => {
-    //             this.result = response.data;
-    //         })
-    //     this.$event.$emit('categoryselected', [this.result,true,category.nome])
-    // }
+    selectedCategory(category) {
+        this.$emit('categoryselected', category)
+    }
     }
     }
 </script>

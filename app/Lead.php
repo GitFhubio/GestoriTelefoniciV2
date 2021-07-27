@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Lead extends Model
 {
     protected $fillable=['offer_name','nome','cognome','telefono','email','status'];
-
+    // protected $with = ['notes'];
     public function offer(){
         return $this->belongsTo('App\Offer');
     }

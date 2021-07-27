@@ -12,14 +12,13 @@
           name:'CategoryComponent',
           data:function(){
             return{
-              catselected:this.element
             }
           },
           props:{
               element:Object,
           },
           methods: {
-           clickedCategory() {  this.$event.$emit('selCat',this.catselected)}
+           clickedCategory() {  this.$emit('selCat')}
           },
         // mounted() {
         //     console.log(this.giampselected)

@@ -48,13 +48,11 @@
 
     // data.append('my_name', this.newName)
     // data.append('my_email',this.newEmail)
-    datas.append('my_id', this.id);
+    // datas.append('my_id', this.id);
     //  datas.append('_method', 'POST')
-     this.$http.post('/api/myoperators/', {
-       params:{ data:datas,
-    },
+     this.$http.post('/api/myoperators/',datas,{
            headers: {
-      'Content-Type': `multipart/form-data; boundary=${datas._boundary}`,
+      'Content-Type': `multipart/form-data;`,
                         }
                     }
 

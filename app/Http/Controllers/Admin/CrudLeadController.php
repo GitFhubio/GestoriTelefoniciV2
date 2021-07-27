@@ -1,10 +1,11 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 use App\Lead;
+use App\Note;
 use App\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,9 +21,42 @@ class CrudLeadController extends Controller
      $offers=Offer::where('user_id', Auth::user()->id)->get();
      $leads = [];
      foreach ($offers as $offer){
-         $leads[] =$offer->leads()->get()->first();
+         $leads[] =$offer->leads()->get();
      }
-    return response($leads, Response::HTTP_OK);
+     foreach($leads as $lead){
+         $lead->load('notes');
+        //  return $lead;
+     }
+     $myfinal=[];
+     foreach($leads as $lead){
+         $myfinal[] = $lead->toArray();
+     }
+     $result = call_user_func_array("array_merge", $myfinal);
+//  dd($myfinal);
+
+    //  $leadsB = DB::table('offers')
+    //  ->select('leads.*','notes.lead_id','notes.messaggio')
+    //  ->join('users','offers.user_id','=','users.id')
+    //  ->join('leads','leads.offer_id','=','offers.id')
+    //  ->join('notes','notes.lead_id','=','leads.id')
+    //  ->where('offers.user_id', Auth::user()->id)
+    //  ->get();
+    //  $leadsAll = Lead::with('notes')->get();
+
+    //  $newleads=$leadsB->toArray();
+
+    //  $result = array_reduce($newleads, function($carry, $item) {
+    //      if(!isset($carry[$item->offer_id])) {
+    //          $carry[$item->offer_id] = $item;
+    //      }
+    //     //  else {
+    //     //      $carry[$item->messaggio] += $item->messaggio;
+    //     //  }
+    //      return $carry;
+    //  });
+// dd($leads);
+    //  $result = array_values($result);
+    return response($result, Response::HTTP_OK);
     }
 
     /**

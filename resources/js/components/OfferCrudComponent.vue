@@ -56,7 +56,7 @@
 
     },
     mounted() {
-      this.categoriesinArray();
+    //   this.categoriesinArray();
     },
     props: ['id','name','costo_mensile','descrizione','data_inizio','data_fine','categories'],
     filters: {

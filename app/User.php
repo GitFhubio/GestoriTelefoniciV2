@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -46,4 +47,7 @@ class User extends Authenticatable
         $date=$date->format('d F Y');
         return $date;
     }
+    // public function leads(){
+    //     return $this->hasManyThrough('App\Lead', 'App\User');
+    // }
 }

@@ -7,7 +7,7 @@
     <leadcrud-component
       v-for="crud in cruds"
       v-bind="crud"
-      :key="crud.id"
+      :key="crud.id" :myselectedoffer = offertaselezionata
       @update="update"
     ></leadcrud-component>
     </div>
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  function Crud({id,offer_id, nome,cognome,telefono,email,status}) {
+  function Crud({id,offer_id, nome,cognome,telefono,email,status,notes}) {
     this.id = id;
     this.offer_id = offer_id;
     this.nome=nome;
@@ -23,14 +23,17 @@
     this.email=email;
     this.cognome = cognome;
     this.status=status;
+    this.notes=notes;
   }
 
   import LidCrudComponent from './LidCrudComponent.vue';
 
   export default {
+      props:
+        ['offertaselezionata'],
     data() {
       return {
-        cruds: []
+        cruds: [],
       }
     },
     methods: {
@@ -49,6 +52,8 @@
 //     const { data } = await this.$http.get('/api/cruds/create');
 //     this.cruds.push(new Crud(data));
 //   },
+    },
+    mounted(){
     },
  created() {
   this.read();
