@@ -15,8 +15,8 @@
     <div class="d-flex justify-content-center">
       <button  class="goldbtn"  @click="create">Aggiungi nuova offerta</button>
     </div>
-        <select name="" id=""   v-model="selectedOption"   @input="changeOffer()" >
-    <option value="All" >Tutte le offerte</option>
+        <select name="" id=""   v-model="selectedOption"   @change="changeOffer()" >
+    <option value="All" selected>Tutte le offerte</option>
     <option v-for="crud in cruds" :key="crud.id" :value="crud.id">{{crud.name}}</option>
     </select>
     </div>
@@ -38,9 +38,11 @@
   export default {
     data() {
       return {
-            selectedOption: 0,
+            selectedOption: 'All',
         cruds: [],
       }
+    },
+    mounted(){
     },
     methods: {
         changeOffer: function () {

@@ -2660,14 +2660,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'LidCrudComponent',
   data: function data() {
-    return {//   offertaselezionata:''
-    };
+    return {};
   },
   methods: {
     update: function update(val) {
       this.$emit('update', this.id, val.target.selectedOptions[0].value);
     }
   },
+  mounted: function mounted() {},
   props: ['id', 'offer_id', 'nome', 'cognome', 'telefono', 'email', 'status', 'notes', 'myselectedoffer'],
   filters: {
     properCase: function properCase(string) {
@@ -2850,10 +2850,11 @@ function Crud(_ref) {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      selectedOption: 0,
+      selectedOption: 'All',
       cruds: []
     };
   },
+  mounted: function mounted() {},
   methods: {
     changeOffer: function changeOffer() {
       console.log("child changed: " + this.selectedOption);
@@ -42006,7 +42007,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.offer_id == _vm.myselectedoffer || _vm.myselectedoffer == "All"
+  return _vm.offer_id == _vm.myselectedoffer ||
+    !_vm.myselectedoffer ||
+    _vm.myselectedoffer == "All"
     ? _c("div", { staticClass: "card" }, [
         _c("div", { staticClass: "card-body" }, [
           _c("h5", [_vm._v("Offerta: " + _vm._s(_vm.offer_id))]),
@@ -42300,26 +42303,30 @@ var render = function() {
         ],
         attrs: { name: "", id: "" },
         on: {
-          input: function($event) {
-            return _vm.changeOffer()
-          },
-          change: function($event) {
-            var $$selectedVal = Array.prototype.filter
-              .call($event.target.options, function(o) {
-                return o.selected
-              })
-              .map(function(o) {
-                var val = "_value" in o ? o._value : o.value
-                return val
-              })
-            _vm.selectedOption = $event.target.multiple
-              ? $$selectedVal
-              : $$selectedVal[0]
-          }
+          change: [
+            function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.selectedOption = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            },
+            function($event) {
+              return _vm.changeOffer()
+            }
+          ]
         }
       },
       [
-        _c("option", { attrs: { value: "All" } }, [_vm._v("Tutte le offerte")]),
+        _c("option", { attrs: { value: "All", selected: "" } }, [
+          _vm._v("Tutte le offerte")
+        ]),
         _vm._v(" "),
         _vm._l(_vm.cruds, function(crud) {
           return _c("option", { key: crud.id, domProps: { value: crud.id } }, [

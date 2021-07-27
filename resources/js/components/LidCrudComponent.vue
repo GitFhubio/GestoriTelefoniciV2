@@ -1,5 +1,5 @@
 <template>
-  <div class="card" v-if="offer_id==myselectedoffer || myselectedoffer=='All'">
+  <div class="card" v-if="offer_id==myselectedoffer || !myselectedoffer || myselectedoffer=='All'">
     <div class="card-body">
       <h5>Offerta: {{ offer_id }}</h5>
        <h6>Nome: {{ nome | properCase }}</h6>
@@ -19,13 +19,15 @@
     name:'LidCrudComponent',
     data() {
         return{
-        //   offertaselezionata:''
         }
     },
     methods: {
    update(val) {
         this.$emit('update', this.id,val.target.selectedOptions[0].value);
       }
+    },
+    mounted(){
+
     },
     props: ['id', 'offer_id','nome','cognome','telefono','email','status','notes','myselectedoffer'],
     filters: {
