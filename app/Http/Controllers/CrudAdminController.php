@@ -96,6 +96,10 @@ class CrudAdminController extends Controller
         if ($request->file('my_file')) {
             $crud->img=$request->file('my_file')->store('images');
         }
+        if ($request->file('my_file2')) {
+            $crud->backimg=$request->file('my_file2')->store('images');
+        }
+
       $crud->save();
 
       return response(null, Response::HTTP_OK);

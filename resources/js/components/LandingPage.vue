@@ -12,13 +12,13 @@
     </div>
     <item-section :items="operators" class="section d-flex flex-wrap justify-content-center operatorsSection">
        </item-section>
-    <category-section :array="categories" v-on:categoryselected="metodo" class="section d-flex flex-wrap justify-content-center categoriesSection">
+    <category-section :array="categories"  v-on:categoryselected="metodo" class="section d-flex flex-wrap justify-content-center categoriesSection">
     </category-section>
      <div class="section-title-container">
     <button class="text-center reset" @click="showAll" v-if="result">Torna a tutte le offerte</button>
      </div>
  <div class="section-title-container">
- <h2 class="text-center section-title" style="margin-top: 20px">Le nostre offerte
+ <h2  class="text-center section-title" style="margin-top: 20px">Le nostre offerte
       {{result != null ? result.nome : ''}}</h2>
      </div>
     <item-section :items="offers" :parameter="operators" class="section d-flex flex-wrap justify-content-center offersSection">
@@ -66,13 +66,16 @@ mounted: function() {
             this.categories = response.data;
             console.log(this.categories);
         })
+}
 //    this.$event.$on('categoryselected', (data) => {
 //    this.offers=data[0];
 //    this.onSearch=data[1];
 //    this.selected=data[2];
 // })
-// this.$event.$on('selCat',data=>{this.result=data;
+// this.$event.$on('categoryselected',data=>{this.result=data;
 // console.log(this.result);
+// })
+// },
 //   axios
 //             .get('api/categories/' + this.result.nome)
 //             .then((response) => {
@@ -81,7 +84,7 @@ mounted: function() {
 // }
 // )
 // this.$event.$emit('categoryselected', [this.result,true,category.nome])
-},
+,
 methods:{
         showAll() {
         axios
@@ -94,7 +97,7 @@ methods:{
         this.selected='';
     },
     metodo(cat){
-        // alert('elleh');
+        this.result=cat;
   axios
             .get('api/categories/' + cat.nome)
             .then((response) => {
@@ -103,6 +106,5 @@ methods:{
 }
     }
 }
-
 
 </script>

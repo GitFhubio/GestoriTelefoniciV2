@@ -8,6 +8,8 @@
       <input type="text" placeholder="Inserisci nuova email" v-model="newEmail">
       <label for="img">Carica nuovo avatar</label>
       <input type="file"  name= "img" @change="onFileChange" ref="fileInput" >
+        <label for="img">Carica nuovo banner</label>
+         <input type="file"  name= "backimg" ref="fileInput2" >
           <div class="buttons" style="margin-top:10px;">
      <button class="goldbtn" @click="update">Aggiorna </button>
      <button class="goldbtn" @click="del">Cancella</button>
@@ -44,7 +46,9 @@
    update() {
      var datas = new FormData();
     const file = this.$refs.fileInput.files[0];
+    const file2 = this.$refs.fileInput2.files[0];
     datas.append('my_file', file);
+    datas.append('my_file2', file2);
     datas.append('my_name', this.newName)
     datas.append('my_email',this.newEmail)
      datas.append('_method', 'PUT')

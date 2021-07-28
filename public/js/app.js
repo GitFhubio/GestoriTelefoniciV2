@@ -1887,7 +1887,7 @@ function Crud(_ref) {
         }, _callee);
       }))();
     },
-    update: function update(id, name, email, datas) {
+    update: function update(id, name, email) {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -1988,6 +1988,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'AdminCrudComponent',
   data: function data() {
@@ -2015,7 +2017,9 @@ __webpack_require__.r(__webpack_exports__);
     update: function update() {
       var datas = new FormData();
       var file = this.$refs.fileInput.files[0];
+      var file2 = this.$refs.fileInput2.files[0];
       datas.append('my_file', file);
+      datas.append('my_file2', file2);
       datas.append('my_name', this.newName);
       datas.append('my_email', this.newEmail);
       datas.append('_method', 'PUT');
@@ -2447,22 +2451,25 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('api/categories').then(function (response) {
       _this.categories = response.data;
       console.log(_this.categories);
-    }); //    this.$event.$on('categoryselected', (data) => {
-    //    this.offers=data[0];
-    //    this.onSearch=data[1];
-    //    this.selected=data[2];
-    // })
-    // this.$event.$on('selCat',data=>{this.result=data;
-    // console.log(this.result);
-    //   axios
-    //             .get('api/categories/' + this.result.nome)
-    //             .then((response) => {
-    //                 this.offers = response.data;
-    //             })
-    // }
-    // )
-    // this.$event.$emit('categoryselected', [this.result,true,category.nome])
-  },
+    });
+  } //    this.$event.$on('categoryselected', (data) => {
+  //    this.offers=data[0];
+  //    this.onSearch=data[1];
+  //    this.selected=data[2];
+  // })
+  // this.$event.$on('categoryselected',data=>{this.result=data;
+  // console.log(this.result);
+  // })
+  // },
+  //   axios
+  //             .get('api/categories/' + this.result.nome)
+  //             .then((response) => {
+  //                 this.offers = response.data;
+  //             })
+  // }
+  // )
+  // this.$event.$emit('categoryselected', [this.result,true,category.nome])
+  ,
   methods: {
     showAll: function showAll() {
       var _this2 = this;
@@ -2477,7 +2484,7 @@ __webpack_require__.r(__webpack_exports__);
     metodo: function metodo(cat) {
       var _this3 = this;
 
-      // alert('elleh');
+      this.result = cat;
       axios.get('api/categories/' + cat.nome).then(function (response) {
         _this3.offers = response.data;
       });
@@ -41404,6 +41411,13 @@ var render = function() {
           ref: "fileInput",
           attrs: { type: "file", name: "img" },
           on: { change: _vm.onFileChange }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "img" } }, [_vm._v("Carica nuovo banner")]),
+        _vm._v(" "),
+        _c("input", {
+          ref: "fileInput2",
+          attrs: { type: "file", name: "backimg" }
         }),
         _vm._v(" "),
         _c(

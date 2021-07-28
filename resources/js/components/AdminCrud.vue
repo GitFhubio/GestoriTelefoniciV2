@@ -43,9 +43,7 @@
     data.forEach(crud => this.cruds.push(new Crud(crud)));
 
       },
-  async update(id, name,email,datas
-
-  ) {
+  async update(id, name,email) {
 
     await this.$http.put(`/api/myoperators/${id}`,{ name,email
     },
