@@ -1,7 +1,7 @@
 <template>
   <div @mouseenter="onHover()" @mouseleave="onLeave()" class="card" :class="zoom">
     <div class="card-body d-flex flex-column">
-      <img class="operator_img" :src="url"/>
+      <img class="operator_img" :src="image()">
       <h5 class="card-text">Nome: {{ name | properCase }}</h5>
        <input type="text" placeholder="Inserisci nuovo nome" v-model="newName">
        <h6 class="card-text">Email: {{ email }}</h6>
@@ -22,11 +22,19 @@
         return {
             newName:'',
              newEmail:'',
+             baseurl:location.origin+'/',
              zoom:'zoom-off',
-             url:this.img,
+             url:this.img
         }
     },
     methods: {
+        image(){
+          if(this.url.indexOf("http") == -1){
+              return this.baseurl+this.url;
+          } else{
+              return this.url;
+          }
+        },
       onFileChange(e) {
       const file = e.target.files[0];
       this.url = URL.createObjectURL(file);
@@ -37,20 +45,10 @@
      var datas = new FormData();
     const file = this.$refs.fileInput.files[0];
     datas.append('my_file', file);
-       datas.append('my_name', this.newName);
-        datas.append('my_email', this.newEmail);
-        // datas.append('_method', 'PUT')
-    console.log(datas.get('my_file'));
-    //    https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/1200px-Google_Chrome_icon_%28September_2014%29.svg.png
-        this.$emit('update', this.id,this.newName,this.newEmail
-        // ,datas
-        );
-
-    // data.append('my_name', this.newName)
-    // data.append('my_email',this.newEmail)
-    // datas.append('my_id', this.id);
-    //  datas.append('_method', 'POST')
-     this.$http.post('/api/myoperators/',datas,{
+    datas.append('my_name', this.newName)
+    datas.append('my_email',this.newEmail)
+     datas.append('_method', 'PUT')
+     this.$http.post(`/api/myoperators/${this.id}`,datas,{
            headers: {
       'Content-Type': `multipart/form-data;`,
                         }
@@ -63,6 +61,9 @@
     .catch(error => {
         console.log(error.response.data)
     });
+
+        this.$emit('update', this.id,this.newName,this.newEmail
+        );
 }
 ,
       del() {

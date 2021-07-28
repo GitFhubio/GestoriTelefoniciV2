@@ -43,27 +43,17 @@
     data.forEach(crud => this.cruds.push(new Crud(crud)));
 
       },
-  async update(id, name,email
-//   ,datas
+  async update(id, name,email,datas
 
   ) {
 
     await this.$http.put(`/api/myoperators/${id}`,{ name,email
-    // ,datas
-    }
-    //  { headers: { "Content-Type":"multipart/form-data" }
-    //  }
-    //      { headers: { "Content-Type":"application/x-www-form-urlencoded" }
-    //  }
-
+    },
 
     );
-    //   console.log(datas.get('my_file'));
-    //   console.log(datas.get('my_name'));
-    //   console.log(datas.get('my_email'));
     this.cruds.find(crud => crud.id === id).name =name;
     this.cruds.find(crud => crud.id === id).email = email;
-    // this.cruds.find(crud => crud.id === id).img = null;
+        // this.cruds.find(crud => crud.id === id).img =datas.get('my_file');
     // this.cruds.find(crud => crud.id === id).backimg = backimg;
 
   },

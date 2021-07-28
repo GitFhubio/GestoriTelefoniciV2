@@ -89,9 +89,13 @@ class CrudAdminController extends Controller
     public function update(Request $request, $id)
     {
           $crud = User::findOrFail($id);
-          $crud->name = $request->name;
-          $crud->email= $request->email;
-        // $crud->img=$request->file('my_file')->store('images');
+        //   $crud->name = $request->name;
+        //   $crud->email= $request->email;
+        $crud->name = $request->input('my_name') ? $request->input('my_name') :  $request->name ;
+        $crud->email=$request->input('my_email') ? $request->input('my_email') : $request->email;
+        if ($request->file('my_file')) {
+            $crud->img=$request->file('my_file')->store('images');
+        }
       $crud->save();
 
       return response(null, Response::HTTP_OK);

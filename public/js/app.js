@@ -1887,8 +1887,7 @@ function Crud(_ref) {
         }, _callee);
       }))();
     },
-    update: function update(id, name, email //   ,datas
-    ) {
+    update: function update(id, name, email, datas) {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -1899,24 +1898,16 @@ function Crud(_ref) {
                 _context2.next = 2;
                 return _this2.$http.put("/api/myoperators/".concat(id), {
                   name: name,
-                  email: email // ,datas
-
-                } //  { headers: { "Content-Type":"multipart/form-data" }
-                //  }
-                //      { headers: { "Content-Type":"application/x-www-form-urlencoded" }
-                //  }
-                );
+                  email: email
+                });
 
               case 2:
-                //   console.log(datas.get('my_file'));
-                //   console.log(datas.get('my_name'));
-                //   console.log(datas.get('my_email'));
                 _this2.cruds.find(function (crud) {
                   return crud.id === id;
                 }).name = name;
                 _this2.cruds.find(function (crud) {
                   return crud.id === id;
-                }).email = email; // this.cruds.find(crud => crud.id === id).img = null;
+                }).email = email; // this.cruds.find(crud => crud.id === id).img =datas.get('my_file');
                 // this.cruds.find(crud => crud.id === id).backimg = backimg;
 
               case 4:
@@ -2003,11 +1994,19 @@ __webpack_require__.r(__webpack_exports__);
     return {
       newName: '',
       newEmail: '',
+      baseurl: location.origin + '/',
       zoom: 'zoom-off',
       url: this.img
     };
   },
   methods: {
+    image: function image() {
+      if (this.url.indexOf("http") == -1) {
+        return this.baseurl + this.url;
+      } else {
+        return this.url;
+      }
+    },
     onFileChange: function onFileChange(e) {
       var file = e.target.files[0];
       this.url = URL.createObjectURL(file); //   console.log(location.origin+'/images'+this.url.slice(this.url.indexOf('/')+1));
@@ -2018,17 +2017,9 @@ __webpack_require__.r(__webpack_exports__);
       var file = this.$refs.fileInput.files[0];
       datas.append('my_file', file);
       datas.append('my_name', this.newName);
-      datas.append('my_email', this.newEmail); // datas.append('_method', 'PUT')
-
-      console.log(datas.get('my_file')); //    https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/1200px-Google_Chrome_icon_%28September_2014%29.svg.png
-
-      this.$emit('update', this.id, this.newName, this.newEmail // ,datas
-      ); // data.append('my_name', this.newName)
-      // data.append('my_email',this.newEmail)
-      // datas.append('my_id', this.id);
-      //  datas.append('_method', 'POST')
-
-      this.$http.post('/api/myoperators/', datas, {
+      datas.append('my_email', this.newEmail);
+      datas.append('_method', 'PUT');
+      this.$http.post("/api/myoperators/".concat(this.id), datas, {
         headers: {
           'Content-Type': "multipart/form-data;"
         }
@@ -2037,6 +2028,7 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error.response.data);
       });
+      this.$emit('update', this.id, this.newName, this.newEmail);
     },
     del: function del() {
       this.$emit('delete', this.id);
@@ -41354,7 +41346,7 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "card-body d-flex flex-column" }, [
-        _c("img", { staticClass: "operator_img", attrs: { src: _vm.url } }),
+        _c("img", { staticClass: "operator_img", attrs: { src: _vm.image() } }),
         _vm._v(" "),
         _c("h5", { staticClass: "card-text" }, [
           _vm._v("Nome: " + _vm._s(_vm._f("properCase")(_vm.name)))
