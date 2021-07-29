@@ -1,5 +1,5 @@
 <template>
-        <div :class="item.hasOwnProperty('img') ? 'operators' : 'offers'"
+        <!-- <div :class="item.hasOwnProperty('img') ? 'operators' : 'offers'"
         :style="[item.hasOwnProperty('img') ? (item.img ? {'background-image':'url('+item.img+')'}:
          {'background-image':'url(https://www.hopkinsmedicine.org/sebin/n/j/noimageavailable.png)'}) : '']">
             <div v-if="item.hasOwnProperty('img')" >
@@ -12,19 +12,33 @@
             <div v-for="(operator,ind) in parameter" :key=ind>
          <p v-if="item.user_id == operator.id">{{operator.name}} </p>
          </div>
-            </div>
         </div>
+        </div> -->
+         <component v-bind:is="currentComponent"></component>
 </template>
 
-<script>
+ <script>
+    // export default {
+    //       name:'ItemComponent',
+    //       props:{
+    //           item:Object,
+    //           parameter:Array,
+    //       },
+    // }
+
+      import OfferComponent from './OfferComponent.vue';
+import OperatorComponent from './OperatorComponent.vue';
+
     export default {
           name:'ItemComponent',
-          props:{
-              item:Object,
-              parameter:Array,
-          },
-        // mounted() {
-        //     console.log('Component mounted.')
-        // }
-    }
+           components: {
+  OfferComponent,
+ OperatorComponent
+  },
+  props: {currentComponent:String,}
+
+      }
 </script>
+
+
+

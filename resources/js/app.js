@@ -13,6 +13,8 @@ Vue.component('item-section', require('./components/ItemSection.vue').default);
 Vue.component('landing-page', require('./components/LandingPage.vue').default);
 Vue.component('category-component', require('./components/CategoryComponent.vue').default);
 Vue.component('operator-page', require('./components/OperatorPage.vue').default);
+Vue.component('operator-component', require('./components/OperatorComponent.vue').default);
+Vue.component('offer-component', require('./components/OfferComponent.vue').default);
  import Vue from 'vue';
  import axios from 'axios';
  Vue.prototype.$http = axios;

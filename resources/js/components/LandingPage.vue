@@ -1,5 +1,7 @@
 <template>
 <div id="landing">
+    <!-- <test-component is="component1" />
+        <test-component is="component2" /> -->
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
               <h1 class="display-4">Benvenuto in GestoriTelefonici.it</h1>
@@ -10,7 +12,7 @@
     <div class="section-title-container">
         <h2 class="text-center section-title" style="margin-top: 20px">I nostri operatori</h2>
     </div>
-    <item-section :items="operators" class="section d-flex flex-wrap justify-content-center operatorsSection">
+    <item-section  mycomponent="operator-component"  :items="operators" class="section d-flex flex-wrap justify-content-center operatorsSection">
        </item-section>
     <category-section :array="categories"  v-on:categoryselected="metodo" class="section d-flex flex-wrap justify-content-center categoriesSection">
     </category-section>
@@ -21,7 +23,7 @@
  <h2  class="text-center section-title" style="margin-top: 20px">Le nostre offerte
       {{result != null ? result.nome : ''}}</h2>
      </div>
-    <item-section :items="offers" :parameter="operators" class="section d-flex flex-wrap justify-content-center offersSection">
+    <item-section mycomponent="offer-component" :items="offers" :parameter="operators" class="section d-flex flex-wrap justify-content-center offersSection">
     </item-section>
 </main>
 </div>
@@ -35,7 +37,7 @@ export default {
   name: 'LandingPage',
   components: {
     ItemSection,
-    CategorySection
+    CategorySection,
   },
   data: function() {
     return {
