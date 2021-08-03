@@ -7880,7 +7880,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".card[data-v-e439a2fa] {\n  width: 400px;\n  margin: 20px;\n  background-image: url(\"https://cutewallpaper.org/21/black-orange-background/Orange-yellow-and-black-abstract-business-background-Vector-.jpg\");\n  background-size: 120%;\n  background-position: left center;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".card[data-v-e439a2fa] {\n  width: 400px;\n  margin: 20px;\n  background-image: url(\"https://cutewallpaper.org/21/black-orange-background/Orange-yellow-and-black-abstract-business-background-Vector-.jpg\");\n  background-size: 120%;\n  background-position: left center;\n}\n.card .notes[data-v-e439a2fa] {\n  padding-right: 30%;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -42229,7 +42229,7 @@ var render = function() {
           _c("h6", [_vm._v("Status: " + _vm._s(_vm.status))]),
           _vm._v(" "),
           _vm.notes[0] != undefined
-            ? _c("h6", [
+            ? _c("h6", { staticClass: "notes" }, [
                 _vm._v("Messaggio : " + _vm._s(_vm.notes[0]["messaggio"]))
               ])
             : _vm._e(),

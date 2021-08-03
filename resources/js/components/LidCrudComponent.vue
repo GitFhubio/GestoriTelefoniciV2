@@ -7,7 +7,7 @@
        <h6>Telefono: {{ telefono }}</h6>
       <h6>Email: {{ email }}</h6>
       <h6>Status: {{ status }}</h6>
-      <h6 v-if="notes[0] != undefined">Messaggio : {{notes[0]['messaggio']}}</h6>
+      <h6 class="notes" v-if="notes[0] != undefined">Messaggio : {{notes[0]['messaggio']}}</h6>
       <select name="" id="" @change="update">
           <option v-for="thisstatus in ['ok','non ok','da gestire']" :value="thisstatus" :key="thisstatus" :selected="thisstatus === status">{{thisstatus | properCase}}</option>
       </select>
@@ -46,6 +46,9 @@ margin:20px;
 background-image:url('https://cutewallpaper.org/21/black-orange-background/Orange-yellow-and-black-abstract-business-background-Vector-.jpg');
 background-size: 120%;
 background-position:left center;
-
+.notes{
+    padding-right:30%;
 }
+}
+
 </style>
