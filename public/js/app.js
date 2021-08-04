@@ -3098,15 +3098,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'OfferCrudComponent',
   data: function data() {
     return {
-      newName: '',
-      newCostoMensile: 0,
-      newDescription: '',
-      newDataInizio: '',
-      newDataFine: '',
+      newName: this.name,
+      newCostoMensile: this.costo_mensile,
+      newDescription: this.descrizione,
+      newDataInizio: this.data_inizio,
+      newDataFine: this.data_fine,
+      //        selectedCategories:[1],
+      //        categoryNames2:[ { text: 'Adsl', value: 0 },
+      //    { text: 'Fibra', value: 1 },  { text: '5G', value: 2 },
+      //    { text: 'Mobile', value: 3 }, { text: 'Estero', value: 4 }],
       newCategories: [],
       categoryNames: ['Adsl', 'Fibra', '5G', 'Mobile', 'Estero']
     };
@@ -3126,16 +3131,14 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit('delete', this.id);
     }
   },
-  //     computed:{
-  // elleh(){
-  //   var arr=[]
-  //   this.categories.forEach(el => {
-  //         el.pivot.category_id
-  //   });
-  // }
-  //     },
   mounted: function mounted() {
-    console.log(this.categories);
+    var _this = this;
+
+    //   console.log(this.categories);
+    console.log(this.data_inizio);
+    this.categories.forEach(function (element) {
+      _this.newCategories.push(element.pivot.category_id);
+    });
   },
   props: ['id', 'name', 'costo_mensile', 'descrizione', 'data_inizio', 'data_fine', 'categories'],
   filters: {
@@ -7843,7 +7846,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".card[data-v-55aacdfb] {\n  width: 300px;\n  margin: 20px;\n}\n.card img[data-v-55aacdfb] {\n  width: auto;\n  height: 40%;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".card[data-v-55aacdfb] {\n  width: 300px;\n  margin: 20px;\n}\n.card .card-body[data-v-55aacdfb] {\n  width: 100%;\n}\n.card img[data-v-55aacdfb] {\n  width: auto;\n  height: 200px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -42644,14 +42647,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card" }, [
     _c("div", { staticClass: "card-body d-flex flex-column" }, [
-      _c(
-        "label",
-        {
-          staticClass: "align-self-center font-weight-bold",
-          attrs: { for: "name" }
-        },
-        [_vm._v(_vm._s(_vm.name))]
-      ),
+      _c("h5", { staticClass: "align-self-center font-weight-bold" }, [
+        _vm._v(_vm._s(_vm._f("properCase")(_vm.newName)))
+      ]),
+      _vm._v(" "),
+      _c("label", { attrs: { for: "name" } }, [_vm._v("Nome offerta: ")]),
       _vm._v(" "),
       _c("input", {
         directives: [
@@ -42679,7 +42679,7 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("label", { attrs: { for: "costomensile" } }, [
-        _vm._v("Costo mensile: " + _vm._s(_vm.costo_mensile) + " €")
+        _vm._v("Costo mensile(in €) :")
       ]),
       _vm._v(" "),
       _c("input", {
@@ -42692,7 +42692,7 @@ var render = function() {
           }
         ],
         attrs: {
-          type: "tel",
+          type: "number",
           name: "costomensile",
           placeholder: "Inserisci nuovo costo mensile"
         },
@@ -42707,9 +42707,7 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("label", { attrs: { for: "descrizione" } }, [
-        _vm._v("Descrizione:" + _vm._s(_vm.descrizione) + " ")
-      ]),
+      _c("label", { attrs: { for: "descrizione" } }, [_vm._v("Descrizione:")]),
       _vm._v(" "),
       _c("textarea", {
         directives: [
@@ -42720,7 +42718,7 @@ var render = function() {
             expression: "newDescription"
           }
         ],
-        attrs: { type: "text" },
+        attrs: { type: "text", rows: "4" },
         domProps: { value: _vm.newDescription },
         on: {
           input: function($event) {
@@ -42732,9 +42730,7 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("label", { attrs: { for: "datainizio" } }, [
-        _vm._v("Data inizio:" + _vm._s(_vm.data_inizio))
-      ]),
+      _c("label", { attrs: { for: "datainizio" } }, [_vm._v("Data inizio:")]),
       _c("input", {
         directives: [
           {
@@ -42756,9 +42752,7 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("label", { attrs: { for: "datafine" } }, [
-        _vm._v("Data fine:" + _vm._s(_vm.data_fine))
-      ]),
+      _c("label", { attrs: { for: "datafine" } }, [_vm._v("Data fine:")]),
       _c("input", {
         directives: [
           {
@@ -42781,17 +42775,6 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("label", { attrs: { for: "categories" } }, [_vm._v(" Categorie:")]),
-      _vm._v(" "),
-      _c(
-        "ul",
-        { staticStyle: { "list-style": "none" } },
-        _vm._l(_vm.categories, function(el, ind) {
-          return _c("li", { key: ind }, [
-            _vm._v(_vm._s(_vm.categoryNames[el.pivot.category_id]))
-          ])
-        }),
-        0
-      ),
       _vm._v(" "),
       _c(
         "select",

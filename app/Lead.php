@@ -15,9 +15,9 @@ class Lead extends Model
     public function notes(){
         return $this->hasMany('App\Note');
     }
-    public function getCreatedAtAttribute($value){
-        $date=new Carbon($value);
-        $date=$date->format('d F Y');
-        return $date;
-    }
+    // public function getCreatedAtAttribute($value){
+    //     $date=new Carbon($value);
+    //     $date=$date->format('d F Y');
+    //     return $date;
+    // }
 }

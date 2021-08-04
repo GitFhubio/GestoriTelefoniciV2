@@ -18,14 +18,14 @@ class Offer extends Model
     public function user(){
         return $this->belongsTo('App\User');
     }
-    public function getDataInizioAttribute($value){
-        $date=new Carbon($value);
-        $date=$date->format('d F Y');
-        return $date;
-    }
-    public function getDataFineAttribute($value){
-        $date=new Carbon($value);
-        $date=$date->format('d F Y');
-        return $date;
-    }
+    // public function getDataInizioAttribute($value){
+    //     $date=new Carbon($value);
+    //     $date=$date->format('d F Y');
+    //     return $date;
+    // }
+    // public function getDataFineAttribute($value){
+    //     $date=new Carbon($value);
+    //     $date=$date->format('d F Y');
+    //     return $date;
+    // }
 }

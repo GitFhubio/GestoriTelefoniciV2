@@ -93,9 +93,13 @@
 .card{
 width:300px;
 margin:20px;
+.card-body{
+    width:100%;
+}
 img{
 width:auto;
-height:40%;
+height:200px;
 }
+
 }
 </style>

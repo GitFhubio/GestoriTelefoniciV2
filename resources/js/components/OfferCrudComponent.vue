@@ -1,22 +1,23 @@
 <template>
   <div class="card">
     <div class="card-body d-flex flex-column">
-      <label class="align-self-center font-weight-bold" for="name">{{name}}</label>
+      <h5 class="align-self-center font-weight-bold">{{newName | properCase}}</h5>
+      <label for="name">Nome offerta: </label>
       <input type="text" name="name" placeholder="Inserisci nuovo nome" v-model="newName">
-      <label for="costomensile">Costo mensile: {{costo_mensile}} €</label>
-      <input type="tel" name="costomensile" placeholder="Inserisci nuovo costo mensile" v-model="newCostoMensile">
-      <label for="descrizione">Descrizione:{{descrizione}} </label>
-      <textarea type="text" v-model="newDescription"></textarea>
-      <label for="datainizio">Data inizio:{{data_inizio}}</label><input type="date"  v-model="newDataInizio">
-       <label for="datafine">Data fine:{{data_fine}}</label><input type="date"  v-model="newDataFine">
+      <label for="costomensile">Costo mensile(in €) :</label>
+      <input type="number" name="costomensile" placeholder="Inserisci nuovo costo mensile" v-model="newCostoMensile">
+      <label for="descrizione">Descrizione:</label>
+      <textarea type="text" v-model="newDescription" rows="4"></textarea>
+      <label for="datainizio">Data inizio:</label><input type="date"  v-model="newDataInizio">
+       <label for="datafine">Data fine:</label><input type="date"  v-model="newDataFine">
         <label for="categories"> Categorie:</label>
-        <ul style="list-style:none;">
+        <!-- <ul style="list-style:none;">
         <li v-for="(el,ind) in categories" :key=ind>{{categoryNames[el.pivot.category_id]}}</li>
-        </ul>
+        </ul> -->
          <!-- v-model="newCategories" -->
         <!-- :selected="categoriesinArray().includes(val) ? 'selected' :''" -->
        <select name="categories[]" id="" multiple v-model="newCategories">
-        <option :value="val" v-for="val in [0,1,2,3,4]"  :key=val>{{categoryNames[val]}}</option>
+        <option :value="val" v-for="val in [0,1,2,3,4]" :key=val>{{categoryNames[val]}}</option>
     </select>
             <div class="buttons" style="margin-top:10px;">
      <button  class="goldbtn" @click="update">Aggiorna</button>
@@ -30,11 +31,15 @@
     name:'OfferCrudComponent',
     data:function(){
         return {
-           newName:'',
-           newCostoMensile:0,
-           newDescription:'',
-           newDataInizio:'',
-           newDataFine:'',
+           newName:this.name,
+           newCostoMensile:this.costo_mensile,
+           newDescription:this.descrizione,
+           newDataInizio:this.data_inizio,
+           newDataFine:this.data_fine,
+    //        selectedCategories:[1],
+    //        categoryNames2:[ { text: 'Adsl', value: 0 },
+    //    { text: 'Fibra', value: 1 },  { text: '5G', value: 2 },
+    //    { text: 'Mobile', value: 3 }, { text: 'Estero', value: 4 }],
            newCategories:[],
            categoryNames:['Adsl','Fibra','5G','Mobile','Estero']
         }
@@ -55,16 +60,12 @@
       },
 
     },
-//     computed:{
-// elleh(){
-//   var arr=[]
-//   this.categories.forEach(el => {
-//         el.pivot.category_id
-//   });
-// }
-//     },
     mounted() {
-      console.log(this.categories);
+    //   console.log(this.categories);
+    console.log(this.data_inizio);
+         this.categories.forEach(element => {
+         this.newCategories.push(element.pivot.category_id);
+         });
     },
     props: ['id','name','costo_mensile','descrizione','data_inizio','data_fine','categories'],
     filters: {

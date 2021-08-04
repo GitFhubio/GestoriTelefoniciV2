@@ -11,7 +11,8 @@
     <p class="lead">{{ $offer->descrizione }}</p>
     <hr class="my-4">
     <p>Costo mensile : {{ $offer->costo_mensile}} €</p>
-    <p>Attivabile entro il : {{ $offer->data_fine}}</p>
+    <p>Attivabile entro il : {{ date("d M Y", strtotime($offer->data_fine))}}</p>
+    {{-- levando carbon dal model faccio la renderizzazione della data solo nella pagina dove serve --}}
     <div>
         @foreach($offer->categories as $category)
         <span style="background-color:#FE9A25;" class="badge rounded-pill">{{$category->nome}}</span>
