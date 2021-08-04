@@ -3126,7 +3126,16 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit('delete', this.id);
     }
   },
-  mounted: function mounted() {//   this.categoriesinArray();
+  //     computed:{
+  // elleh(){
+  //   var arr=[]
+  //   this.categories.forEach(el => {
+  //         el.pivot.category_id
+  //   });
+  // }
+  //     },
+  mounted: function mounted() {
+    console.log(this.categories);
   },
   props: ['id', 'name', 'costo_mensile', 'descrizione', 'data_inizio', 'data_fine', 'categories'],
   filters: {
@@ -42812,7 +42821,7 @@ var render = function() {
             }
           }
         },
-        _vm._l([1, 2, 3, 4, 5], function(val) {
+        _vm._l([0, 1, 2, 3, 4], function(val) {
           return _c("option", { key: val, domProps: { value: val } }, [
             _vm._v(_vm._s(_vm.categoryNames[val]))
           ])

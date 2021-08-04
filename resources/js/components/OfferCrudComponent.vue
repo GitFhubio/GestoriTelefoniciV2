@@ -16,7 +16,7 @@
          <!-- v-model="newCategories" -->
         <!-- :selected="categoriesinArray().includes(val) ? 'selected' :''" -->
        <select name="categories[]" id="" multiple v-model="newCategories">
-        <option :value="val" v-for="val in [1,2,3,4,5]"  :key=val>{{categoryNames[val]}}</option>
+        <option :value="val" v-for="val in [0,1,2,3,4]"  :key=val>{{categoryNames[val]}}</option>
     </select>
             <div class="buttons" style="margin-top:10px;">
      <button  class="goldbtn" @click="update">Aggiorna</button>
@@ -55,8 +55,16 @@
       },
 
     },
+//     computed:{
+// elleh(){
+//   var arr=[]
+//   this.categories.forEach(el => {
+//         el.pivot.category_id
+//   });
+// }
+//     },
     mounted() {
-    //   this.categoriesinArray();
+      console.log(this.categories);
     },
     props: ['id','name','costo_mensile','descrizione','data_inizio','data_fine','categories'],
     filters: {
