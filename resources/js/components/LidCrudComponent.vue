@@ -7,7 +7,9 @@
        <h6>Telefono: {{ telefono }}</h6>
       <h6>Email: {{ email }}</h6>
       <h6>Status: {{ status }}</h6>
-      <h6 class="notes" v-if="notes[0] != undefined">Messaggio : {{notes[0]['messaggio']}}</h6>
+      <div v-if="notes.length != 0 ">
+      <h6 v-for="(el,ind) in notes" :key="ind" class="notes" >Messaggio {{notes.length != 1 ? '#'+(ind+1) : ''}} : {{el['messaggio']}}</h6>
+      </div>
       <select name="" id="" @change="update">
           <option v-for="thisstatus in ['ok','non ok','da gestire']" :value="thisstatus" :key="thisstatus" :selected="thisstatus === status">{{thisstatus | properCase}}</option>
       </select>
@@ -41,7 +43,7 @@
 <style lang="scss" scoped>
 
 .card{
-width:400px;
+width:450px;
 margin:20px;
 background-image:url('https://cutewallpaper.org/21/black-orange-background/Orange-yellow-and-black-abstract-business-background-Vector-.jpg');
 background-size: 120%;

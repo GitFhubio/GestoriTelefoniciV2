@@ -2677,6 +2677,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'LidCrudComponent',
   data: function data() {
@@ -7880,7 +7882,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".card[data-v-e439a2fa] {\n  width: 400px;\n  margin: 20px;\n  background-image: url(\"https://cutewallpaper.org/21/black-orange-background/Orange-yellow-and-black-abstract-business-background-Vector-.jpg\");\n  background-size: 120%;\n  background-position: left center;\n}\n.card .notes[data-v-e439a2fa] {\n  padding-right: 30%;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".card[data-v-e439a2fa] {\n  width: 450px;\n  margin: 20px;\n  background-image: url(\"https://cutewallpaper.org/21/black-orange-background/Orange-yellow-and-black-abstract-business-background-Vector-.jpg\");\n  background-size: 120%;\n  background-position: left center;\n}\n.card .notes[data-v-e439a2fa] {\n  padding-right: 30%;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -42228,10 +42230,21 @@ var render = function() {
           _vm._v(" "),
           _c("h6", [_vm._v("Status: " + _vm._s(_vm.status))]),
           _vm._v(" "),
-          _vm.notes[0] != undefined
-            ? _c("h6", { staticClass: "notes" }, [
-                _vm._v("Messaggio : " + _vm._s(_vm.notes[0]["messaggio"]))
-              ])
+          _vm.notes.length != 0
+            ? _c(
+                "div",
+                _vm._l(_vm.notes, function(el, ind) {
+                  return _c("h6", { key: ind, staticClass: "notes" }, [
+                    _vm._v(
+                      "Messaggio " +
+                        _vm._s(_vm.notes.length != 1 ? "#" + (ind + 1) : "") +
+                        " : " +
+                        _vm._s(el["messaggio"])
+                    )
+                  ])
+                }),
+                0
+              )
             : _vm._e(),
           _vm._v(" "),
           _c(
@@ -42622,9 +42635,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card" }, [
     _c("div", { staticClass: "card-body d-flex flex-column" }, [
-      _c("label", { attrs: { for: "name" } }, [
-        _vm._v("Nome:" + _vm._s(_vm.name))
-      ]),
+      _c(
+        "label",
+        {
+          staticClass: "align-self-center font-weight-bold",
+          attrs: { for: "name" }
+        },
+        [_vm._v(_vm._s(_vm.name))]
+      ),
       _vm._v(" "),
       _c("input", {
         directives: [
@@ -42665,7 +42683,7 @@ var render = function() {
           }
         ],
         attrs: {
-          type: "number",
+          type: "tel",
           name: "costomensile",
           placeholder: "Inserisci nuovo costo mensile"
         },

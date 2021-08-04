@@ -78,135 +78,135 @@ class DatabaseSeeder extends Seeder
         $user4->save();
         $user4->assignRole($role2);
 
-            $newOffer1= new Offer;
-            $newOffer1->name= 'TIM SUPER FIBRA';
-            $newOffer1->costo_mensile = 29.90;
-            $newOffer1->descrizione ='Fibra fino a 1 Giga Modem TIM HUB + Chiamate Illimitate SOLO ONLINE.AGGIUNGI TIMVISION E HAI DAZN CON TUTTA LA SERIE A TIM E INFINITY+
+        $newOffer1= new Offer;
+        $newOffer1->name= 'TIM SUPER FIBRA';
+        $newOffer1->costo_mensile = 29.90;
+        $newOffer1->descrizione ='Fibra fino a 1 Giga Modem TIM HUB + Chiamate Illimitate SOLO ONLINE.AGGIUNGI TIMVISION E HAI DAZN CON TUTTA LA SERIE A TIM E INFINITY+
             CON LA UEFA CHAMPIONS LEAGUE';
-            $newOffer1->data_inizio = '2021-06-01';
-            $newOffer1->data_fine= '2021-08-31';
-            $newOffer1->user_id = 2;
-            $newOffer1->save();
-            $newOffer1->categories()->attach(2);
-            $newOffer3= new Offer;
-            $newOffer3->name= 'TIM SUPER FIBRA con TIM UNICA';
-            $newOffer3->costo_mensile = 29.90;
-            $newOffer3->descrizione ='Wi-Fi ultraveloce, nuovo Modem TIM HUB+ e Chiamate illimitate. I primi 2 mesi te li regala TIM-Fibra fino a 1 GIGA.Modem TIM HUB+.Chiamate illimitate verso tutti.SOLO ONLINE.GIGA ILLIMITATI per te e la tua famiglia..';
-            $newOffer3->data_inizio = '2021-07-01';
-            $newOffer3->data_fine= '2021-10-31';
-            $newOffer3->user_id = 2;
-            $newOffer3->save();
-            $newOffer3->categories()->attach(2);
-            $newOffer3->categories()->attach(4);
+        $newOffer1->data_inizio = '2021-06-01';
+        $newOffer1->data_fine= '2021-08-31';
+        $newOffer1->user_id = 2;
+        $newOffer1->save();
+        $newOffer1->categories()->attach(2);
+        $newOffer3= new Offer;
+        $newOffer3->name= 'TIM SUPER FIBRA con TIM UNICA';
+        $newOffer3->costo_mensile = 29.90;
+        $newOffer3->descrizione ='Wi-Fi ultraveloce, nuovo Modem TIM HUB+ e Chiamate illimitate. I primi 2 mesi te li regala TIM-Fibra fino a 1 GIGA.Modem TIM HUB+.Chiamate illimitate verso tutti.SOLO ONLINE.GIGA ILLIMITATI per te e la tua famiglia..';
+        $newOffer3->data_inizio = '2021-07-01';
+        $newOffer3->data_fine= '2021-10-31';
+        $newOffer3->user_id = 2;
+        $newOffer3->save();
+        $newOffer3->categories()->attach(2);
+        $newOffer3->categories()->attach(4);
 
-            $newOffer4= new Offer;
-            $newOffer4->name= 'INFINITO';
-            $newOffer4->costo_mensile = 24.99;
-            $newOffer4->descrizione ='Spedizione gratuita a casa tua.Giga, minuti e SMS illimitati,velocità 2Mbps+ INFO,minuti verso UE illimitati,1000 Minuti verso extra UE,1 Giga di roaming extra UE + 200 minuti,Top service incluso + INFO';
-            $newOffer4->data_inizio = '2021-07-01';
-            $newOffer4->data_fine= '2021-10-31';
-            $newOffer4->user_id = 3;
-            $newOffer4->save();
-            $newOffer4->categories()->attach(3);
-            $newOffer4->categories()->attach(4);
-            $newOffer4->categories()->attach(5);
+        $newOffer4= new Offer;
+        $newOffer4->name= 'INFINITO';
+        $newOffer4->costo_mensile = 24.99;
+        $newOffer4->descrizione ='Spedizione gratuita a casa tua.Giga, minuti e SMS illimitati,velocità 2Mbps+ INFO,minuti verso UE illimitati,1000 Minuti verso extra UE,1 Giga di roaming extra UE + 200 minuti,Top service incluso + INFO';
+        $newOffer4->data_inizio = '2021-07-01';
+        $newOffer4->data_fine= '2021-10-31';
+        $newOffer4->user_id = 3;
+        $newOffer4->save();
+        $newOffer4->categories()->attach(3);
+        $newOffer4->categories()->attach(4);
+        $newOffer4->categories()->attach(5);
 
-            $newOffer7= new Offer;
-            $newOffer7->name= 'UNLIMITED 5G';
-            $newOffer7->costo_mensile = 29.99;
-            $newOffer7->descrizione ='Unlimited 5G con Easy Pay, GIGA illimitati con 5G Priority Pass,Call Center senza attese,200 Minuti verso l\'Estero, Minuti illimitati e 200 SMS';
-            $newOffer7->data_inizio = '2021-05-01';
-            $newOffer7->data_fine= '2021-12-31';
-            $newOffer7->user_id = 4;
-            $newOffer7->save();
-            $newOffer7->categories()->attach(3);
-            $newOffer7->categories()->attach(4);
+        $newOffer7= new Offer;
+        $newOffer7->name= 'UNLIMITED 5G';
+        $newOffer7->costo_mensile = 29.99;
+        $newOffer7->descrizione ='Unlimited 5G con Easy Pay, GIGA illimitati con 5G Priority Pass,Call Center senza attese,200 Minuti verso l\'Estero, Minuti illimitati e 200 SMS';
+        $newOffer7->data_inizio = '2021-05-01';
+        $newOffer7->data_fine= '2021-12-31';
+        $newOffer7->user_id = 4;
+        $newOffer7->save();
+        $newOffer7->categories()->attach(3);
+        $newOffer7->categories()->attach(4);
 
-            $newOffer2= new Offer;
-            $newOffer2->name= 'TIM SUPER FIBRA con Offerta Mobile';
-            $newOffer2->costo_mensile = 39.90;
-            $newOffer2->descrizione ='TIM SUPER FIBRAFibra + OFFERTA MOBILE
+        $newOffer2= new Offer;
+        $newOffer2->name= 'TIM SUPER FIBRA con Offerta Mobile';
+        $newOffer2->costo_mensile = 39.90;
+        $newOffer2->descrizione ='TIM SUPER FIBRAFibra + OFFERTA MOBILE
             Scegli l\'offerta con il meglio della rete fissa e mobile di TIM: per te una SIM gratuita.Per la tua casa: Fibra, Modem TIM HUB+ e Chiamate Illimitate
             I PRIMI 2 MESI IN REGALO.Per il tuo smartphone: Minuti e SMS illimitati, GIGA illimitati con TIM UNICA,Nessun costo per la SIM.PROMO SOLO ONLINE';
-            $newOffer2->data_inizio = '2021-04-01';
-            $newOffer2->data_fine= '2021-07-31';
-            $newOffer2->user_id = 2;
-            $newOffer2->save();
-            $newOffer2->categories()->attach(2);
-            $newOffer2->categories()->attach(4);
+        $newOffer2->data_inizio = '2021-04-01';
+        $newOffer2->data_fine= '2021-07-31';
+        $newOffer2->user_id = 2;
+        $newOffer2->save();
+        $newOffer2->categories()->attach(2);
+        $newOffer2->categories()->attach(4);
 
-            $newOffer10= new Offer;
-            $newOffer10->name= 'TIM SUPER ADSL';
-            $newOffer10->costo_mensile = 24.90;
-            $newOffer10->descrizione ='Internet senza limiti in ADSL con velocità fino a 20 Mbps;Modem fibra incluso;Chiamate illimitate verso fissi e cellulari nazionali;TIM Vision;Attivazione inclusa. ';
-            $newOffer10->data_inizio = '2021-04-01';
-            $newOffer10->data_fine= '2021-07-31';
-            $newOffer10->user_id = 2;
-            $newOffer10->save();
-            $newOffer10->categories()->attach(1);
+        $newOffer10= new Offer;
+        $newOffer10->name= 'TIM SUPER ADSL';
+        $newOffer10->costo_mensile = 24.90;
+        $newOffer10->descrizione ='Internet senza limiti in ADSL con velocità fino a 20 Mbps;Modem fibra incluso;Chiamate illimitate verso fissi e cellulari nazionali;TIM Vision;Attivazione inclusa. ';
+        $newOffer10->data_inizio = '2021-04-01';
+        $newOffer10->data_fine= '2021-07-31';
+        $newOffer10->user_id = 2;
+        $newOffer10->save();
+        $newOffer10->categories()->attach(1);
 
-            $newOffer8= new Offer;
-            $newOffer8->name= 'Super Fibra';
-            $newOffer8->costo_mensile = 24.99;
-            $newOffer8->descrizione ='Fibra fino a 1 Gigabit
+        $newOffer8= new Offer;
+        $newOffer8->name= 'Super Fibra';
+        $newOffer8->costo_mensile = 24.99;
+        $newOffer8->descrizione ='Fibra fino a 1 Gigabit
             Modem Wi-Fi 6 incluso,Inclusi 12 mesi di Amazon Prime,Senza costi di attivazione';
-            $newOffer8->data_inizio = '2021-06-01';
-            $newOffer8->data_fine= '2021-11-30';
-            $newOffer8->user_id = 4;
-            $newOffer8->save();
-            $newOffer8->categories()->attach(2);
+        $newOffer8->data_inizio = '2021-06-01';
+        $newOffer8->data_fine= '2021-11-30';
+        $newOffer8->user_id = 4;
+        $newOffer8->save();
+        $newOffer8->categories()->attach(2);
 
-            $newOffer9= new Offer;
-            $newOffer9->name= 'YOUNG 5G';
-            $newOffer9->costo_mensile = 11.99;
-            $newOffer9->descrizione ='Giga illimitati in 5G sulle tue App,80 GIGA da usare come vuoi,Minuti e SMS illimitati';
-            $newOffer9->data_inizio = '2021-07-01';
-            $newOffer9->data_fine= '2021-10-31';
-            $newOffer9->user_id = 4;
-            $newOffer9->save();
-            $newOffer9->categories()->attach(2);
-            $newOffer9->categories()->attach(3);
+        $newOffer9= new Offer;
+        $newOffer9->name= 'YOUNG 5G';
+        $newOffer9->costo_mensile = 11.99;
+        $newOffer9->descrizione ='Giga illimitati in 5G sulle tue App,80 GIGA da usare come vuoi,Minuti e SMS illimitati';
+        $newOffer9->data_inizio = '2021-07-01';
+        $newOffer9->data_fine= '2021-10-31';
+        $newOffer9->user_id = 4;
+        $newOffer9->save();
+        $newOffer9->categories()->attach(2);
+        $newOffer9->categories()->attach(3);
 
-            $newOffer6= new Offer;
-            $newOffer6->name= 'SPECIAL MINUTI 50 GIGA';
-            $newOffer6->costo_mensile = 29.90;
-            $newOffer6->descrizione ='GIGA MINUTI E SMS,50 Giga + minuti illimitati : MINUTI VERSO UE, MINUTI VERSO EXTRA UE, ROAMING EXTRA UE';
-            $newOffer6->data_inizio = '2021-07-01';
-            $newOffer6->data_fine= '2021-10-31';
-            $newOffer6->user_id = 3;
-            $newOffer6->save();
-            $newOffer6->categories()->attach(4);
-            $newOffer6->categories()->attach(5);
+        $newOffer6= new Offer;
+        $newOffer6->name= 'SPECIAL MINUTI 50 GIGA';
+        $newOffer6->costo_mensile = 29.90;
+        $newOffer6->descrizione ='GIGA MINUTI E SMS,50 Giga + minuti illimitati : MINUTI VERSO UE, MINUTI VERSO EXTRA UE, ROAMING EXTRA UE';
+        $newOffer6->data_inizio = '2021-07-01';
+        $newOffer6->data_fine= '2021-10-31';
+        $newOffer6->user_id = 3;
+        $newOffer6->save();
+        $newOffer6->categories()->attach(4);
+        $newOffer6->categories()->attach(5);
 
-            $newOffer5= new Offer;
-            $newOffer5->name= 'Vodafone Family Plan';
-            $newOffer5->costo_mensile = 39.90;
-            $newOffer5->descrizione ='Internet fino a 2.5 Gigabit/s.Modem Wifi 6 con Wi-Fi Optimizer.Chiamate da telefono fisso.SIM 5G per il tuo smartphone.con giga, minuti e SMS illimitati.In più puoi aggiungere Vodafone TV Sport Plus e NOW Sport o Vodafone TV Intrattenimento e NOW Entertainment con uno sconto sulla rete fissa per i primi 12 mesi';
-            $newOffer5->data_inizio = '2021-08-01';
-            $newOffer5->data_fine= '2021-10-31';
-            $newOffer5->user_id = 3;
-            $newOffer5->save();
-            $newOffer5->categories()->attach(2);
-            $newOffer5->categories()->attach(3);
+        $newOffer5= new Offer;
+        $newOffer5->name= 'Vodafone Family Plan';
+        $newOffer5->costo_mensile = 39.90;
+        $newOffer5->descrizione ='Internet fino a 2.5 Gigabit/s.Modem Wifi 6 con Wi-Fi Optimizer.Chiamate da telefono fisso.SIM 5G per il tuo smartphone.con giga, minuti e SMS illimitati.In più puoi aggiungere Vodafone TV Sport Plus e NOW Sport o Vodafone TV Intrattenimento e NOW Entertainment con uno sconto sulla rete fissa per i primi 12 mesi';
+        $newOffer5->data_inizio = '2021-08-01';
+        $newOffer5->data_fine= '2021-10-31';
+        $newOffer5->user_id = 3;
+        $newOffer5->save();
+        $newOffer5->categories()->attach(2);
+        $newOffer5->categories()->attach(3);
 
-            $status = ['da gestire','non ok','ok'];
+        $status = ['da gestire','non ok','ok'];
 
-     for ($i=0; $i < 20; $i++) {
+        for ($i=0; $i < 20; $i++) {
+            $newLead = new Lead;
+            $newLead->nome = $faker->name();
+            $newLead->cognome = $faker->lastName();
+            $newLead->email = $faker->email();
+            $newLead->telefono= $faker->numerify('3#########');
+            $newLead->status = $status[array_rand($status, 1)];
+            $newLead->offer_id =rand(1, 10);
+            $newLead->save();
 
-         $newLead = new Lead;
-         $newLead->nome = $faker->name();
-         $newLead->cognome = $faker->lastName();
-         $newLead->email = $faker->email();
-         $newLead->telefono= $faker->numerify('3#########');
-         $newLead->status = $status[array_rand($status, 1)];
-         $newLead->offer_id =rand(1,10);
-         $newLead->save();
-     }
-     for ($i=0; $i < 20; $i++) {
-         $newNote =new Note();
-         $newNote->lead_id =rand(1,20);
-         $newNote->messaggio =$faker->sentence();
-         $newNote->save();
-     }
+            for ($e=0; $e < rand(1,2); $e++) {
+                $newNote =new Note();
+                $newNote->lead_id =$i+1;
+                $newNote->messaggio =$faker->sentence();
+                $newNote->save();
+            }
+        }
     }
 }

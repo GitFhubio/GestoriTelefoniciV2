@@ -1,10 +1,10 @@
 <template>
   <div class="card">
     <div class="card-body d-flex flex-column">
-      <label for="name">Nome:{{name}}</label>
-       <input type="text" name="name" placeholder="Inserisci nuovo nome" v-model="newName">
+      <label class="align-self-center font-weight-bold" for="name">{{name}}</label>
+      <input type="text" name="name" placeholder="Inserisci nuovo nome" v-model="newName">
       <label for="costomensile">Costo mensile: {{costo_mensile}} €</label>
-      <input type="number" name="costomensile" placeholder="Inserisci nuovo costo mensile" v-model="newCostoMensile">
+      <input type="tel" name="costomensile" placeholder="Inserisci nuovo costo mensile" v-model="newCostoMensile">
       <label for="descrizione">Descrizione:{{descrizione}} </label>
       <textarea type="text" v-model="newDescription"></textarea>
       <label for="datainizio">Data inizio:{{data_inizio}}</label><input type="date"  v-model="newDataInizio">
