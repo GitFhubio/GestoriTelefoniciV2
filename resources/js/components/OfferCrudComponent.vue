@@ -62,7 +62,7 @@
     },
     mounted() {
     //   console.log(this.categories);
-    console.log(this.data_inizio);
+    // console.log(this.data_inizio);
          this.categories.forEach(element => {
          this.newCategories.push(element.pivot.category_id);
          });

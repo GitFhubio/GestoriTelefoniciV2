@@ -3135,7 +3135,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     //   console.log(this.categories);
-    console.log(this.data_inizio);
+    // console.log(this.data_inizio);
     this.categories.forEach(function (element) {
       _this.newCategories.push(element.pivot.category_id);
     });
