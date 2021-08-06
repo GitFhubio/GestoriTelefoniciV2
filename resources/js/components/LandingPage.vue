@@ -10,7 +10,7 @@
           </div>
 <main class="container landing-page">
     <div class="section-title-container">
-        <h2 class="text-center section-title" style="margin-top: 20px">I nostri operatori</h2>
+        <h2 data-aos="fade-right" data-aos-delay="400"  class="text-center section-title font-italic" style="margin-top: 20px">I nostri operatori</h2>
     </div>
     <item-section  mycomponent="operator-component"  :items="operators" class="section d-flex flex-wrap justify-content-center operatorsSection">
        </item-section>
@@ -20,7 +20,7 @@
     <button class="text-center reset" @click="showAll" v-if="result">Torna a tutte le offerte</button>
      </div>
  <div class="section-title-container">
- <h2  class="text-center section-title" style="margin-top: 20px">Le nostre offerte
+ <h2 data-aos="fade-right"  data-aos-delay="500" class="text-center section-title font-italic" style="margin-top: 20px">Le nostre offerte
       {{result != null ? result.nome : ''}}</h2>
      </div>
     <item-section mycomponent="offer-component" :items="offers" :parameter="operators" class="section d-flex flex-wrap justify-content-center offersSection">

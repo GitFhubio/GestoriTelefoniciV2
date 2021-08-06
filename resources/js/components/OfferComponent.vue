@@ -1,5 +1,5 @@
 <template>
-        <div class='offers'
+        <div data-aos="flip-down"  data-aos-duration="1000" class='offers'
         style=
          "{'background-image':'url(https://www.hopkinsmedicine.org/sebin/n/j/noimageavailable.png)'}">
             <div>

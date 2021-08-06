@@ -1,5 +1,5 @@
 <template>
-        <div class='operators'
+        <div data-aos="zoom-in"  data-aos-duration="500" class='operators'
         :style="  {'background-image':'url('+item.img+')'}">
             <div>
             <a :href="'/operators/' +item.id"></a>

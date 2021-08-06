@@ -1,6 +1,6 @@
 <template>
 <!-- :style="{'background-image':'url('+element.img+')'}"> -->
-        <div class="categories" @click="clickedCategory()">
+        <div data-aos="zoom-in" class="categories" @click="clickedCategory()">
             <!-- @click="$emit('selCat')" -->
             <img :src="element.img" alt="">
             <p>{{element.nome}}</p>

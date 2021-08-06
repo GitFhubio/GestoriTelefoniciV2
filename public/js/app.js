@@ -7918,7 +7918,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".card[data-v-505e128e] {\n  width: 500px;\n  margin: 20px;\n  background-image: url(\"https://freerangestock.com/sample/25036/orange-gradient.jpg\");\n  background-position: left center;\n  background-size: cover;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".card[data-v-505e128e] {\n  width: 500px;\n  border: 4px solid black;\n  border-radius: 10px;\n  margin: 20px;\n  background-image: url(\"https://freerangestock.com/sample/25036/orange-gradient.jpg\");\n  background-position: left center;\n  background-size: cover;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -41807,6 +41807,7 @@ var render = function() {
     "div",
     {
       staticClass: "categories",
+      attrs: { "data-aos": "zoom-in" },
       on: {
         click: function($event) {
           return _vm.clickedCategory()
@@ -42090,8 +42091,9 @@ var render = function() {
           _c(
             "h2",
             {
-              staticClass: "text-center section-title",
-              staticStyle: { "margin-top": "20px" }
+              staticClass: "text-center section-title font-italic",
+              staticStyle: { "margin-top": "20px" },
+              attrs: { "data-aos": "fade-right", "data-aos-delay": "500" }
             },
             [
               _vm._v(
@@ -42143,8 +42145,9 @@ var staticRenderFns = [
       _c(
         "h2",
         {
-          staticClass: "text-center section-title",
-          staticStyle: { "margin-top": "20px" }
+          staticClass: "text-center section-title font-italic",
+          staticStyle: { "margin-top": "20px" },
+          attrs: { "data-aos": "fade-right", "data-aos-delay": "400" }
         },
         [_vm._v("I nostri operatori")]
       )
@@ -42175,7 +42178,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "heading" }, [
-      _c("h1", { staticClass: "text-center" }, [
+      _c("h1", { staticClass: "text-center font-italic" }, [
         _vm._v(_vm._s(_vm.cruds.length > 0 ? "I tuoi leads" : "Non hai leads"))
       ])
     ]),
@@ -42494,7 +42497,8 @@ var render = function() {
       staticStyle: {
         "{'background-image'":
           "'url(https://www.hopkinsmedicine.org/sebin/n/j/noimageavailable.png)'}"
-      }
+      },
+      attrs: { "data-aos": "flip-down", "data-aos-duration": "1000" }
     },
     [
       _c(
@@ -42544,7 +42548,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "heading" }, [
-      _c("h1", { staticClass: "text-center" }, [
+      _c("h1", { staticClass: "text-center font-italic" }, [
         _vm._v(
           _vm._s(_vm.cruds.length > 0 ? "Le tue offerte" : "Non hai offerte")
         )
@@ -42585,7 +42589,7 @@ var render = function() {
             expression: "selectedOption"
           }
         ],
-        attrs: { name: "", id: "" },
+        attrs: { name: "" },
         on: {
           change: [
             function($event) {
@@ -42855,7 +42859,8 @@ var render = function() {
     "div",
     {
       staticClass: "operators",
-      style: { "background-image": "url(" + _vm.item.img + ")" }
+      style: { "background-image": "url(" + _vm.item.img + ")" },
+      attrs: { "data-aos": "zoom-in", "data-aos-duration": "500" }
     },
     [
       _c("div", [

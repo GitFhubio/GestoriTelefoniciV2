@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="heading">
-      <h1 class="text-center">{{cruds.length>0 ? 'Le tue offerte' : 'Non hai offerte'}}</h1>
+      <h1 class="text-center font-italic">{{cruds.length>0 ? 'Le tue offerte' : 'Non hai offerte'}}</h1>
     </div>
     <div class="d-flex flex-wrap justify-content-center">
     <offercrud-component
@@ -15,7 +15,7 @@
     <div class="d-flex justify-content-center">
       <button  class="goldbtn"  @click="create">Aggiungi nuova offerta</button>
     </div>
-        <select name="" id=""   v-model="selectedOption"   @change="changeOffer()" >
+        <select name=""  v-model="selectedOption"   @change="changeOffer()" >
     <option value="All" selected>Tutte le offerte</option>
     <option v-for="crud in cruds" :key="crud.id" :value="crud.id">{{crud.name}}</option>
     </select>

@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="heading">
-      <h1 class="text-center">{{cruds.length>0 ? 'I tuoi leads' : 'Non hai leads'}}</h1>
+      <h1 class="text-center font-italic">{{cruds.length>0 ? 'I tuoi leads' : 'Non hai leads'}}</h1>
     </div>
     <div class="d-flex flex-wrap justify-content-center">
     <leadcrud-component

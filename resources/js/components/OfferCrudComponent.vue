@@ -79,6 +79,8 @@
 
 .card{
     width:500px;
+    border:4px solid black;
+    border-radius:10px;
     margin:20px;
 background-image:url('https://freerangestock.com/sample/25036/orange-gradient.jpg');
 background-position: left center;
