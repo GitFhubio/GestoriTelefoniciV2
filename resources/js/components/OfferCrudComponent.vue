@@ -61,10 +61,10 @@
 
     },
     mounted() {
-    //   console.log(this.categories);
+      console.log(this.categories);
     // console.log(this.data_inizio);
          this.categories.forEach(element => {
-         this.newCategories.push(element.pivot.category_id);
+         this.newCategories.push(element.id - 1);
          });
     },
     props: ['id','name','costo_mensile','descrizione','data_inizio','data_fine','categories'],

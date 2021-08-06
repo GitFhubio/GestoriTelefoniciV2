@@ -3134,10 +3134,10 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    //   console.log(this.categories);
-    // console.log(this.data_inizio);
+    console.log(this.categories); // console.log(this.data_inizio);
+
     this.categories.forEach(function (element) {
-      _this.newCategories.push(element.pivot.category_id);
+      _this.newCategories.push(element.id - 1);
     });
   },
   props: ['id', 'name', 'costo_mensile', 'descrizione', 'data_inizio', 'data_fine', 'categories'],
