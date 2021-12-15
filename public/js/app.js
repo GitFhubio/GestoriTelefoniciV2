@@ -3351,7 +3351,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 vue__WEBPACK_IMPORTED_MODULE_2__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_3__.default);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vue_router__WEBPACK_IMPORTED_MODULE_3__.default({
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__.default({
   routes: [{
     path: '/user/operators',
     component: _components_AdminCrud__WEBPACK_IMPORTED_MODULE_0__.default
@@ -3360,7 +3360,23 @@ vue__WEBPACK_IMPORTED_MODULE_2__.default.use(vue_router__WEBPACK_IMPORTED_MODULE
     component: _components_AdminDashboard__WEBPACK_IMPORTED_MODULE_1__.default
   }],
   mode: 'history'
-}));
+}); //piccolo test per proteggere rotte,funziona
+// router.beforeEach((to, from, next) => {
+//     // store.dispatch('fetchAccessToken');
+//     // if (to.fullPath === '/users') {
+//     //   if (!store.state.accessToken) {
+//     //     next('/login');
+//     //   }
+//     // }
+//     if (to.fullPath === '/user/operators') {
+//       if (2==3) {
+//         next('/user/dashboard');
+//       }
+//     }
+//     next();
+//   });
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
 
 /***/ }),
 
